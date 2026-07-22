@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gekko-air.netlify.app/sitemap.xml
