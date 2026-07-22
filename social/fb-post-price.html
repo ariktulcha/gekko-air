@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1080px; height: 1350px; font-family: 'Heebo', sans-serif; background: #123D32; overflow: hidden; }
+  .canvas { position: relative; width: 1080px; height: 1350px; display: flex; flex-direction: column; }
+
+  .wave { position: absolute; inset: 0; background:
+    radial-gradient(900px 500px at 85% -10%, rgba(189,235,255,.14), transparent 60%),
+    radial-gradient(700px 420px at 8% 108%, rgba(183,241,74,.12), transparent 60%); }
+
+  .top { position: relative; padding: 64px 72px 0; display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; }
+  .brand span { color: #F7FAF8; font-weight: 800; font-size: 26px; letter-spacing: .14em; }
+  .tag { background: rgba(183,241,74,.14); border: 1.5px solid rgba(183,241,74,.5); color: #B7F14A; border-radius: 999px; padding: 10px 24px; font-size: 22px; font-weight: 600; }
+
+  .head { position: relative; padding: 56px 72px 0; }
+  .head .kicker { color: #BDEBFF; font-size: 30px; font-weight: 600; margin-bottom: 14px; }
+  .head h1 { color: #F7FAF8; font-size: 74px; line-height: 1.14; font-weight: 900; letter-spacing: -.01em; }
+  .head h1 em { font-style: normal; color: #B7F14A; }
+
+  .compare { position: relative; display: flex; gap: 24px; padding: 44px 72px 0; }
+  .card { flex: 1; border-radius: 28px; padding: 34px 38px; }
+  .card .label { font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+  .card .price { font-size: 66px; font-weight: 900; line-height: 1.1; }
+  .card .sub { font-size: 22px; margin-top: 6px; }
+  .tech { background: rgba(247,250,248,.07); border: 1.5px solid rgba(247,250,248,.16); }
+  .tech .label, .tech .sub { color: #9fb8ac; }
+  .tech .price { color: #F7FAF8; opacity: .85; text-decoration: line-through; text-decoration-color: rgba(183,241,74,.85); text-decoration-thickness: 6px; }
+  .kit { background: #B7F14A; box-shadow: 0 30px 70px -30px rgba(0,0,0,.55); }
+  .kit .label, .kit .sub { color: #123D32; }
+  .kit .price { color: #123D32; }
+
+  .photo { position: relative; margin: 52px 72px 0; border-radius: 32px; overflow: hidden; box-shadow: 0 40px 90px -40px rgba(0,0,0,.7); border: 1.5px solid rgba(247,250,248,.14); }
+  .photo img { display: block; width: 100%; height: 560px; object-fit: cover; }
+  .chip { position: absolute; bottom: 28px; right: 28px; background: rgba(18,61,50,.92); backdrop-filter: blur(4px); color: #F7FAF8; border: 1.5px solid rgba(183,241,74,.5); border-radius: 999px; padding: 16px 30px; font-size: 26px; font-weight: 700; }
+  .chip b { color: #B7F14A; }
+
+  .bottom { position: relative; margin-top: auto; padding: 0 72px 64px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+  .bullets { display: flex; gap: 34px; }
+  .bullet { display: flex; align-items: center; gap: 12px; color: #cfe0d8; font-size: 25px; font-weight: 600; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: #B7F14A; }
+  .cta { background: #B7F14A; color: #123D32; font-size: 30px; font-weight: 800; border-radius: 999px; padding: 22px 46px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="wave"></div>
+
+  <div class="top">
+    <div class="brand"><img src="../assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt=""><span>GEKKO AIR</span></div>
+    <div class="tag">עשה זאת בעצמך</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">3 מזגנים × פעמיים בשנה × טכנאי =</div>
+    <h1>2,000 ₪ בשנה.<br>על <em>אבק</em>.</h1>
+  </div>
+
+  <div class="compare">
+    <div class="card tech">
+      <div class="label">טכנאי, לניקוי אחד</div>
+      <div class="price">400 ₪</div>
+      <div class="sub">וכל עונה מחדש</div>
+    </div>
+    <div class="card kit">
+      <div class="label">ערכת Gekko Air</div>
+      <div class="price">179 ₪</div>
+      <div class="sub">פעם אחת. לכל המזגנים.</div>
+    </div>
+  </div>
+
+  <div class="photo">
+    <img src="../assets/kit-real.jpg" alt="">
+    <div class="chip">הכול בקופסה אחת · <b>45 דקות</b> למזגן נקי</div>
+  </div>
+
+  <div class="bottom">
+    <div class="bullets">
+      <div class="bullet"><span class="dot"></span>חומר אקולוגי</div>
+      <div class="bullet"><span class="dot"></span>בלי לכלוך בבית</div>
+      <div class="bullet"><span class="dot"></span>הדרכת וידאו</div>
+    </div>
+    <div class="cta">להזמנת הערכה ←</div>
+  </div>
+</div>
+</body>
+</html>
