@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gekko Air | ערכת ניקוי מזגנים ביתית. לנקות את המזגן מבפנים, בלי טכנאי</title>
-<meta name="description" content="ערכת Gekko Air לניקוי וחיטוי המזגן בבית: חומר אקולוגי, מרסס לחץ, מברשות ושרוול ניקוז שאוסף את כל הלכלוך. 45 דקות למזגן נקי. ₪249 עם משלוח חינם.">
-<link rel="canonical" href="https://gekkoair.co.il/">
+<meta name="description" content="ערכת Gekko Air לניקוי וחיטוי המזגן בבית: חומר אקולוגי, מרסס לחץ, מברשות ושרוול ניקוז שאוסף את כל הלכלוך. 20 דקות למזגן נקי. ₪249 עם משלוח חינם.">
+<link rel="canonical" href="https://gekko-air.netlify.app/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="Gekko Air: לנקות את המזגן מבפנים. בלי טכנאי.">
@@ -15,11 +15,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"ערכת ניקוי מזגנים Gekko Air","description":"ערכה ביתית מלאה לניקוי וחיטוי מזגנים עיליים: תרסיס אקולוגי, מרסס לחץ, מברשות, מטליות ושרוול ניקוז.","image":"https://gekkoair.co.il/assets/kit-real.jpg","brand":{"@type":"Brand","name":"Gekko Air"},"offers":{"@type":"Offer","priceCurrency":"ILS","price":"249","availability":"https://schema.org/InStock","shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"0","currency":"ILS"}}}}
+{"@context":"https://schema.org","@type":"Product","name":"ערכת ניקוי מזגנים Gekko Air","description":"ערכה ביתית מלאה לניקוי וחיטוי מזגנים עיליים: תרסיס אקולוגי, מרסס לחץ, מברשות, מטליות ושרוול ניקוז.","image":"https://gekko-air.netlify.app/assets/kit-real.jpg","brand":{"@type":"Brand","name":"Gekko Air"},"offers":{"@type":"Offer","priceCurrency":"ILS","price":"249","availability":"https://schema.org/InStock","shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"0","currency":"ILS"}}}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"כמה זמן לוקח לנקות מזגן עם הערכה?","acceptedAnswer":{"@type":"Answer","text":"בסביבות 45 דקות למזגן, כולל 5 דקות המתנה לחומר. אחרי הפעם הראשונה זה מהיר יותר."}},
+{"@type":"Question","name":"כמה זמן לוקח לנקות מזגן עם הערכה?","acceptedAnswer":{"@type":"Answer","text":"בסביבות 20 דקות למזגן, כולל 5 דקות המתנה לחומר. אחרי הפעם הראשונה זה מהיר יותר."}},
 {"@type":"Question","name":"האם צריך ידע טכני או לפרק את המזגן?","acceptedAnswer":{"@type":"Answer","text":"לא. פותחים רק את הפאנל הקדמי, בלי מברגים ובלי פירוק. כל שלב מלווה בסרטון הדרכה קצר בסריקת QR."}},
 {"@type":"Question","name":"הלכלוך והמים לא יטנפו את הבית?","acceptedAnswer":{"@type":"Answer","text":"לא. זה בדיוק התפקיד של שרוול הניקוז שבערכה. הוא נצמד סביב המזגן ואוסף את כל הלכלוך והמים אל מחוץ לבית."}},
 {"@type":"Question","name":"האם החומר בטוח למזגן ולמשפחה?","acceptedAnswer":{"@type":"Answer","text":"החומר אקולוגי ועדין לצלעות אלומיניום, לפלסטיק ולמשטחים מצופים, ומיועד לשימוש ביתי."}},
@@ -114,16 +114,26 @@ header{position:sticky;top:0;z-index:50;background:rgba(247,250,248,.94);backdro
 .how-grid b{font-size:19px;color:var(--green)}
 .how-grid p{font-size:14.5px;color:var(--soft)}
 
-/* proof */
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
-.shot{position:relative;border-radius:20px;aspect-ratio:16/10;overflow:hidden}
+/* proof slider */
+.slider{position:relative;max-width:920px;margin:0 auto}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:20px;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.shot{position:relative;border-radius:16px;aspect-ratio:16/11;overflow:hidden}
 .shot img{width:100%;height:100%;object-fit:cover}
-.tag{position:absolute;top:14px;inset-inline-start:14px;font-weight:700;font-size:12px;border-radius:6px;padding:5px 10px;pointer-events:none}
+.tag{position:absolute;top:12px;inset-inline-start:12px;font-weight:700;font-size:12px;border-radius:6px;padding:4px 10px;pointer-events:none}
 .tag-before{background:#1F2524;color:#fff}
 .tag-after{background:var(--lime);color:var(--green)}
+.pair-cap{position:absolute;bottom:0;inset-inline:0;background:linear-gradient(transparent,rgba(18,61,50,.82));color:#fff;font-size:12.5px;font-weight:600;padding:22px 14px 10px;pointer-events:none}
+.slider-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px -8px rgba(18,61,50,.35);cursor:pointer;font-size:20px;color:var(--green);display:flex;align-items:center;justify-content:center;z-index:2}
+.slider-nav.prev{inset-inline-start:-16px}
+.slider-nav.next{inset-inline-end:-16px}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.sdot{width:9px;height:9px;border-radius:50%;background:rgba(18,61,50,.2);border:none;cursor:pointer;padding:0}
+.sdot.on{background:var(--green);width:22px;border-radius:999px}
 .proof-note{text-align:center;font-size:13px;color:#8a968f;margin-top:6px}
-.pair-cap{position:absolute;bottom:0;inset-inline:0;background:linear-gradient(transparent,rgba(18,61,50,.82));color:#fff;font-size:13.5px;font-weight:600;padding:26px 16px 12px;pointer-events:none}
-.proof-cta{display:flex;justify-content:center;margin-top:28px}
+.proof-cta{display:flex;justify-content:center;margin-top:26px}
 
 /* testimonials */
 .trust-bar{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:36px;font-size:14.5px;color:var(--soft)}
@@ -233,7 +243,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
   <div class="hero-col">
     <span class="hero-badge">ערכה ביתית לניקוי וחיטוי מזגנים</span>
     <h1>לנקות את המזגן מבפנים. בלי טכנאי.</h1>
-    <p class="lead">אבק, עובש וריחות מצטברים בתוך המזגן, בדיוק איפה שהאוויר שלכם עובר. ערכת Gekko Air נותנת לכם לנקות ולחטא הכול לבד, ב־45 דקות, בלי לטנף את הבית.</p>
+    <p class="lead">אבק, עובש וריחות מצטברים בתוך המזגן, בדיוק איפה שהאוויר שלכם עובר. ערכת Gekko Air נותנת לכם לנקות ולחטא הכול לבד, ב־20 דקות, בלי לטנף את הבית.</p>
     <div class="hero-ctas">
       <a class="btn" href="#buy">לרכישת הערכה · ₪249</a>
       <a class="btn btn-ghost" href="#steps">איך זה עובד</a>
@@ -253,7 +263,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
       <div class="sep"></div>
       <div class="stat"><b>3</b><span>שלבים</span></div>
       <div class="sep"></div>
-      <div class="stat"><b>45</b><span>דקות</span></div>
+      <div class="stat"><b>20</b><span>דקות</span></div>
     </div>
   </div>
 </section>
@@ -331,19 +341,36 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
     <div class="sec-head">
       <span class="kicker">לפני ואחרי</span>
       <h2>ככה נראה המזגן שלכם מבפנים. כנראה עכשיו.</h2>
-      <p style="font-size:15.5px;color:var(--muted);max-width:560px;margin:0 auto">כל הצילומים כאן אמיתיים: אותן יחידות, באותו בית, בהפרש של 45 דקות ניקוי עם הערכה.</p>
+      <p style="font-size:15.5px;color:var(--muted);max-width:560px;margin:0 auto">כל הצילומים כאן אמיתיים: אותן יחידות, באותו בית, בהפרש של 20 דקות ניקוי עם הערכה.</p>
     </div>
-    <div class="pair">
-      <div class="shot"><img src="assets/before-coil.jpg" alt="סוללה ומאוורר מלאים אבק, לפני ניקוי" loading="lazy"><span class="tag tag-before">לפני</span><span class="pair-cap">הסוללה והמאוורר: שכבת אבק שהאוויר שלכם עובר דרכה</span></div>
-      <div class="shot"><img src="assets/after-coil.jpg" alt="סוללה ומאוורר נקיים ומבריקים, אחרי ניקוי" loading="lazy"><span class="tag tag-after">אחרי</span><span class="pair-cap">אותה יחידה, 45 דקות אחר כך</span></div>
-    </div>
-    <div class="pair">
-      <div class="shot"><img src="assets/before-unit.jpg" alt="מאוורר המזגן חסום בשכבת אבק, לפני ניקוי" loading="lazy"><span class="tag tag-before">לפני</span><span class="pair-cap">גליל המאוורר: מכאן מגיע הריח</span></div>
-      <div class="shot"><img src="assets/after-unit.jpg" alt="מאוורר המזגן לבן ונקי, אחרי ניקוי" loading="lazy"><span class="tag tag-after">אחרי</span><span class="pair-cap">נקי, שקט, ומקרר חזק יותר</span></div>
-    </div>
-    <div class="pair">
-      <div class="shot"><img src="assets/before-front.jpg" alt="תריסי המזגן מלוכלכים בעובש ואבק, לפני ניקוי" loading="lazy"><span class="tag tag-before">לפני</span><span class="pair-cap">תריסי הפיזור: מה שרואים כשמסתכלים מלמטה</span></div>
-      <div class="shot"><img src="assets/after-front.jpg" alt="תריסי המזגן נקיים, אחרי ניקוי" loading="lazy"><span class="tag tag-after">אחרי</span><span class="pair-cap">מה שהאורחים שלכם יראו מעכשיו</span></div>
+    <div class="slider">
+      <div class="slides" id="baSlides">
+        <div class="slide">
+          <div class="pair">
+            <div class="shot"><img src="assets/before-coil.jpg" alt="סוללה ומאוורר מלאים אבק, לפני ניקוי"><span class="tag tag-before">לפני</span><span class="pair-cap">הסוללה והמאוורר: שכבת אבק שהאוויר עובר דרכה</span></div>
+            <div class="shot"><img src="assets/after-coil.jpg" alt="סוללה ומאוורר נקיים ומבריקים, אחרי ניקוי"><span class="tag tag-after">אחרי</span><span class="pair-cap">אותה יחידה, 20 דקות אחר כך</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="pair">
+            <div class="shot"><img src="assets/before-unit.jpg" alt="מאוורר המזגן חסום בשכבת אבק, לפני ניקוי" loading="lazy"><span class="tag tag-before">לפני</span><span class="pair-cap">גליל המאוורר: מכאן מגיע הריח</span></div>
+            <div class="shot"><img src="assets/after-unit.jpg" alt="מאוורר המזגן לבן ונקי, אחרי ניקוי" loading="lazy"><span class="tag tag-after">אחרי</span><span class="pair-cap">נקי, שקט, ומקרר חזק יותר</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="pair">
+            <div class="shot"><img src="assets/before-front.jpg" alt="תריסי המזגן מלוכלכים בעובש ואבק, לפני ניקוי" loading="lazy"><span class="tag tag-before">לפני</span><span class="pair-cap">תריסי הפיזור: מה שרואים מלמטה</span></div>
+            <div class="shot"><img src="assets/after-front.jpg" alt="תריסי המזגן נקיים, אחרי ניקוי" loading="lazy"><span class="tag tag-after">אחרי</span><span class="pair-cap">מה שהאורחים יראו מעכשיו</span></div>
+          </div>
+        </div>
+      </div>
+      <button class="slider-nav prev" aria-label="הקודם" onclick="baGo(-1)">‹</button>
+      <button class="slider-nav next" aria-label="הבא" onclick="baGo(1)">›</button>
+      <div class="slider-dots" id="baDots">
+        <button class="sdot on" aria-label="שקופית 1" onclick="baTo(0)"></button>
+        <button class="sdot" aria-label="שקופית 2" onclick="baTo(1)"></button>
+        <button class="sdot" aria-label="שקופית 3" onclick="baTo(2)"></button>
+      </div>
     </div>
     <div class="proof-cta"><a class="btn" href="#buy">אני רוצה מזגן נקי כזה</a></div>
   </div>
@@ -391,7 +418,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
       </div>
       <div class="card testi">
         <span class="stars">★★★★☆</span>
-        <p>"לקח לי קצת יותר מ־45 דקות בפעם הראשונה, אבל התוצאה שווה את זה. המזגן של הסלון נראה כמו חדש מבפנים. חסר רק סרטון על מזגן נמוך תקרה."</p>
+        <p>"לקח לי קצת יותר מ־20 דקות בפעם הראשונה, אבל התוצאה שווה את זה. המזגן של הסלון נראה כמו חדש מבפנים. חסר רק סרטון על מזגן נמוך תקרה."</p>
         <div class="who"><span class="avatar"><img src="assets/people/p3.jpg" alt="" loading="lazy"></span><div><b>רון אשכנזי, כפר סבא</b><span>ניקוי ראשון בחיים</span></div></div>
         <span class="verified">✓ רכישה מאומתת</span>
       </div>
@@ -466,7 +493,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
       <h2>כל מה שרציתם לדעת.</h2>
     </div>
     <div class="faq">
-      <details><summary>כמה זמן לוקח לנקות מזגן עם הערכה?</summary><p>בסביבות 45 דקות למזגן, כולל 5 דקות המתנה לחומר. אחרי הפעם הראשונה זה הולך מהר יותר.</p></details>
+      <details><summary>כמה זמן לוקח לנקות מזגן עם הערכה?</summary><p>בסביבות 20 דקות למזגן, כולל 5 דקות המתנה לחומר. אחרי הפעם הראשונה זה הולך מהר יותר.</p></details>
       <details><summary>צריך ידע טכני? צריך לפרק את המזגן?</summary><p>לא. פותחים רק את הפאנל הקדמי, בלי מברגים ובלי פירוק. כל שלב מלווה בסרטון הדרכה קצר שנפתח בסריקת QR.</p></details>
       <details><summary>הלכלוך והמים לא יטנפו לי את הבית?</summary><p>לא. זה בדיוק התפקיד של שרוול הניקוז. הוא נצמד סביב המזגן, אוסף כל טיפה וכל גרגר אבק, ומנקז הכול לדלי. הקיר והרצפה נשארים נקיים.</p></details>
       <details><summary>החומר בטוח למזגן ולמשפחה?</summary><p>החומר אקולוגי ועדין לצלעות האלומיניום, לפלסטיק ולמשטחים מצופים. בלי ריח כימיקלים חריף באוויר שנושמים.</p></details>
@@ -549,5 +576,25 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
   </div>
 </footer>
 
+<script>
+(function(){
+  var slides = document.getElementById('baSlides');
+  var dots = document.getElementById('baDots').children;
+  var idx = 0, n = slides.children.length;
+  function paint(){ for (var i = 0; i < n; i++) dots[i].classList.toggle('on', i === idx); }
+  function show(i){ idx = (i + n) % n; slides.children[idx].scrollIntoView({behavior:'smooth', inline:'start', block:'nearest'}); paint(); }
+  window.baGo = function(d){ show(idx + d); };
+  window.baTo = function(i){ show(i); };
+  // עדכון הנקודות גם בגלילת מגע
+  slides.addEventListener('scroll', function(){
+    clearTimeout(slides._t);
+    slides._t = setTimeout(function(){
+      var w = slides.clientWidth;
+      var i = Math.round(Math.abs(slides.scrollLeft) / w);
+      if (i !== idx && i < n) { idx = i; paint(); }
+    }, 80);
+  });
+})();
+</script>
 </body>
 </html>
