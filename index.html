@@ -573,14 +573,14 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
         <a class="way" href="mailto:info@gekkoair.co.il"><span class="ico">✉️</span>info@gekkoair.co.il</a>
       </div>
     </div>
-    <form class="contact" name="contact" method="POST" action="/.netlify/functions/contact" netlify-honeypot="company">
+    <form class="contact" name="contact" action="#contact" data-endpoint="/.netlify/functions/contact" onsubmit="return false" novalidate>
       <input type="hidden" name="form-name" value="contact">
       <p class="hp-field"><label>לא למלא <input name="company" tabindex="-1" autocomplete="off"></label></p>
       <div><label for="cname">שם מלא</label><input id="cname" name="name" required autocomplete="name" maxlength="80"></div>
       <div><label for="cphone">טלפון</label><input id="cphone" name="phone" type="tel" required autocomplete="tel" maxlength="30"></div>
       <div><label for="cemail">אימייל</label><input id="cemail" name="email" type="email" autocomplete="email" maxlength="120" placeholder="לא חובה, אבל עוזר לנו לחזור אליכם"></div>
       <div><label for="cmsg">איך נוכל לעזור?</label><textarea id="cmsg" name="message" rows="4" required maxlength="1200"></textarea></div>
-      <button class="btn" type="submit">שליחה ל־info@gekkoair.co.il</button>
+      <button class="btn" type="button">שליחה ל־info@gekkoair.co.il</button>
       <p class="form-status" role="status" aria-live="polite"></p>
       <p class="form-note">הפנייה נשלחת למייל הרשמי ומועברת אוטומטית לאריק. לא נשתמש בפרטים לשיווק בלי אישור.</p>
     </form>
@@ -661,19 +661,21 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
   var form = document.querySelector('form.contact');
   if (!form || !window.fetch || !window.FormData) return;
   var status = form.querySelector('.form-status');
-  var button = form.querySelector('button[type="submit"]');
+  var button = form.querySelector('button');
+  var endpoint = form.getAttribute('data-endpoint') || '/.netlify/functions/contact';
   function show(kind, text){
     if (!status) return;
     status.textContent = text;
     status.className = 'form-status show ' + kind;
   }
-  form.addEventListener('submit', function(event){
-    event.preventDefault();
-    if (form.classList.contains('is-sending')) return;
+  function submitContact(event){
+    if (event) event.preventDefault();
+    if (!form.reportValidity()) return false;
+    if (form.classList.contains('is-sending')) return false;
     form.classList.add('is-sending');
     if (button) button.textContent = 'שולחים...';
     show('', 'שולחים את ההודעה...');
-    fetch(form.action, {
+    fetch(endpoint, {
       method: 'POST',
       body: new FormData(form),
       headers: { 'Accept': 'application/json', 'X-Requested-With': 'fetch' }
@@ -689,7 +691,10 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
       form.classList.remove('is-sending');
       if (button) button.textContent = 'שליחה ל־info@gekkoair.co.il';
     });
-  });
+    return false;
+  }
+  form.addEventListener('submit', submitContact);
+  if (button) button.addEventListener('click', submitContact);
 })();
 </script>
 </body>
