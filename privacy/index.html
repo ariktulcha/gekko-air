@@ -28,12 +28,53 @@ ul{padding-inline-start:22px;margin:8px 0}
 .notice{background:#EAF6EC;border:1px solid rgba(18,61,50,.15);border-radius:12px;padding:14px 18px;font-size:13.5px;color:#123D32;margin-bottom:28px}
 footer{border-top:1px solid rgba(18,61,50,.08);padding:20px 24px;text-align:center;font-size:13px;color:#8a968f}
 </style>
+<style>
+.site-header{position:sticky;top:0;z-index:50;background:rgba(247,250,248,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(18,61,50,.08)}
+.gk-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1240px;margin:0 auto;gap:16px}
+.gk-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.gk-brand img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.gk-brand b{font-weight:800;font-size:17px;letter-spacing:.12em;color:#123D32}
+.gk-links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600}
+.gk-links a{color:#123D32;text-decoration:none}
+.gk-btn{display:inline-block;background:#123D32;color:#B7F14A;padding:10px 22px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
+.gk-btn:hover{background:#0d2b23;color:#B7F14A}
+.gk-btn-lime{background:#B7F14A;color:#123D32;align-self:flex-start}
+.gk-btn-lime:hover{background:#c8f96a;color:#123D32}
+.site-footer{background:#123D32;color:#cfe0d8;margin-top:56px}
+.gk-wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.gk-foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding:52px 0 36px}
+.gk-foot h4{color:#F7FAF8;font-size:15px;margin:0 0 14px}
+.gk-foot ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px;margin:0;padding:0}
+.gk-foot a{color:#cfe0d8;text-decoration:none}
+.gk-foot a:hover{color:#B7F14A}
+.gk-foot-brand{display:flex;flex-direction:column;gap:12px}
+.gk-foot-brand .gk-brand b{color:#F7FAF8}
+.gk-foot-brand p{font-size:14px;max-width:270px;margin:0;line-height:1.7}
+.gk-social{display:flex;gap:12px;margin-top:16px}
+.gk-social a{width:38px;height:38px;border-radius:12px;background:rgba(247,250,248,.1);display:flex;align-items:center;justify-content:center}
+.gk-foot-bottom{border-top:1px solid rgba(247,250,248,.12);padding:16px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#9fb8ac}
+@media (max-width:900px){.gk-links{display:none}.gk-foot{grid-template-columns:1fr 1fr;padding:40px 0 28px}}
+</style>
 </head>
 <body>
-<header><div class="nav">
-<a class="brand" href="/"><img src="/assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt=""><b>GEKKO AIR</b></a>
-<div style="display:flex;align-items:center;gap:16px"><a class="back" href="/">← חזרה לאתר</a><a href="/#buy" style="background:#123D32;color:#B7F14A;padding:9px 20px;border-radius:999px;font-weight:700;font-size:13.5px;text-decoration:none">להזמנת הערכה</a></div>
-</div></header>
+<header class="site-header">
+  <div class="gk-nav">
+    <a class="gk-brand" href="/">
+      <img src="/assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt="Gekko Air">
+      <b>GEKKO AIR</b>
+    </a>
+    <nav class="gk-links" aria-label="ניווט ראשי">
+      <a href="/#problem">הבעיה</a>
+      <a href="/#kit">מה בערכה</a>
+      <a href="/#steps">איך זה עובד</a>
+      <a href="/#proof">לפני ואחרי</a>
+      <a href="/#testimonials">לקוחות</a>
+      <a href="/#faq">שאלות</a>
+      <a href="/blog/">בלוג</a>
+    </nav>
+    <a class="gk-btn" href="/#buy">להזמנת הערכה</a>
+  </div>
+</header>
 <main>
 <h1>מדיניות פרטיות</h1>
 <p class="updated">עודכן לאחרונה: יולי 2026</p>
@@ -57,6 +98,51 @@ footer{border-top:1px solid rgba(18,61,50,.08);padding:20px 24px;text-align:cent
 <h2>זכויותיכם</h2>
 <p>בהתאם לחוק הגנת הפרטיות, התשמ״א–1981, באפשרותכם לעיין במידע שנאסף עליכם, לבקש תיקון או מחיקה: דרך <a href="/#contact">עמוד יצירת הקשר</a>.</p>
 </main>
-<footer>© 2026 Gekko Air · <a href="/">gekkoair.co.il</a></footer>
+<footer class="site-footer">
+  <div class="gk-wrap">
+    <div class="gk-foot">
+      <div class="gk-foot-brand">
+        <a class="gk-brand" href="/"><img src="/assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt=""><b>GEKKO AIR</b></a>
+        <p>ערכה ביתית לניקוי וחיטוי מזגנים, עם חומר אקולוגי ושרוול ניקוז שמשאיר את הבית נקי. 20 דקות למזגן נקי.</p>
+        <a class="gk-btn gk-btn-lime" href="/#buy">להזמנת הערכה · ₪249</a>
+      </div>
+      <div>
+        <h4>ניווט</h4>
+        <ul>
+          <li><a href="/#kit">מה בערכה</a></li>
+          <li><a href="/#steps">איך זה עובד</a></li>
+          <li><a href="/#proof">לפני ואחרי</a></li>
+          <li><a href="/#faq">שאלות נפוצות</a></li>
+          <li><a href="/blog/">בלוג</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>מידע</h4>
+        <ul>
+          <li><a href="/shipping/">משלוחים והחזרות</a></li>
+          <li><a href="/terms/">תקנון האתר</a></li>
+          <li><a href="/privacy/">מדיניות פרטיות</a></li>
+          <li><a href="/accessibility/">הצהרת נגישות</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>צור קשר</h4>
+        <ul>
+          <li><a href="https://wa.me/972500000000" target="_blank" rel="noopener">וואטסאפ</a></li>
+          <li><a href="mailto:hello@gekkoair.co.il">hello@gekkoair.co.il</a></li>
+          <li><a href="/#contact">טופס יצירת קשר</a></li>
+        </ul>
+        <div class="gk-social">
+          <a href="https://www.instagram.com/gekkoair" target="_blank" rel="noopener" aria-label="אינסטגרם"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B7F14A" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="#B7F14A" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/gekkoair" target="_blank" rel="noopener" aria-label="פייסבוק"><svg width="19" height="19" viewBox="0 0 24 24" fill="#B7F14A"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4V14h2.7v8h3.4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="gk-foot-bottom">
+      <span>© 2026 Gekko Air. כל הזכויות שמורות.</span>
+      <span>ניקיון מתחיל איפה שהאוויר מתחיל.</span>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

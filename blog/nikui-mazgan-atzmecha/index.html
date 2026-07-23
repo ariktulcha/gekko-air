@@ -17,9 +17,53 @@
 <style>
 body{margin:0;background:#F7FAF8;font-family:Heebo,Arial,sans-serif;color:#1F2524;direction:rtl}a{color:#123D32;text-decoration:none}.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid rgba(18,61,50,.1);background:rgba(247,250,248,.94);position:sticky;top:0;z-index:5;backdrop-filter:blur(8px)}.brand{font-weight:900;letter-spacing:.12em;color:#123D32}.pill{display:inline-flex;border-radius:999px;background:#EAF6EC;color:#123D32;padding:7px 14px;font-size:13px;font-weight:800}.btn{display:inline-flex;background:#B7F14A;color:#123D32!important;padding:14px 25px;border-radius:999px;font-weight:900}.article{max-width:900px;margin:0 auto;padding:54px 28px 70px}.article h1{font-size:46px;line-height:1.13;color:#123D32;margin:20px 0}.article h2{font-size:30px;line-height:1.25;color:#123D32;margin-top:44px}.article h3{font-size:22px;color:#123D32;margin-top:28px}.article p,.article li{font-size:18px;line-height:1.85;color:#35433e}.article ul,.article ol{padding-right:24px}.lead{font-size:20px;line-height:1.75;color:#3d4a45}.note{background:#EAF6EC;border-right:5px solid #B7F14A;border-radius:18px;padding:18px 22px;margin:26px 0}.toc{background:white;border:1px solid rgba(18,61,50,.08);border-radius:22px;padding:20px 24px;margin:28px 0}.toc a{display:block;padding:7px 0;font-weight:700}.heroimg{width:100%;border-radius:30px;box-shadow:0 28px 80px -44px rgba(18,61,50,.5)}.cta{background:#123D32;color:#F7FAF8;border-radius:28px;padding:30px;margin:42px 0}.cta h2{color:#F7FAF8;margin-top:0}.cta p{color:#cfe0d8}.faq{background:white;border:1px solid rgba(18,61,50,.08);border-radius:24px;padding:4px 24px 22px;margin-top:30px}.compare{width:100%;border-collapse:separate;border-spacing:0;margin:24px 0;background:white;border:1px solid rgba(18,61,50,.12);border-radius:22px;overflow:hidden}.compare th,.compare td{padding:16px;border-bottom:1px solid rgba(18,61,50,.08);vertical-align:top;text-align:right}.compare th{background:#123D32;color:#F7FAF8}.compare tr:last-child td{border-bottom:0}.win{font-weight:900;color:#123D32}.source{font-size:14px!important;color:#73817b!important}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:22px 0}.card{background:white;border:1px solid rgba(18,61,50,.09);border-radius:20px;padding:18px}.card strong{color:#123D32}.footer{border-top:1px solid rgba(18,61,50,.1);padding:26px 28px;color:#73817b;text-align:center}@media(max-width:760px){.article h1{font-size:34px}.lead,.article p,.article li{font-size:16px}.nav{gap:14px;flex-wrap:wrap}.article{padding-top:36px}.cards{grid-template-columns:1fr}.compare{font-size:14px}.compare th,.compare td{padding:11px}}
 </style>
+<style>
+.site-header{position:sticky;top:0;z-index:50;background:rgba(247,250,248,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(18,61,50,.08)}
+.gk-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1240px;margin:0 auto;gap:16px}
+.gk-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.gk-brand img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.gk-brand b{font-weight:800;font-size:17px;letter-spacing:.12em;color:#123D32}
+.gk-links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600}
+.gk-links a{color:#123D32;text-decoration:none}
+.gk-btn{display:inline-block;background:#123D32;color:#B7F14A;padding:10px 22px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
+.gk-btn:hover{background:#0d2b23;color:#B7F14A}
+.gk-btn-lime{background:#B7F14A;color:#123D32;align-self:flex-start}
+.gk-btn-lime:hover{background:#c8f96a;color:#123D32}
+.site-footer{background:#123D32;color:#cfe0d8;margin-top:56px}
+.gk-wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.gk-foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding:52px 0 36px}
+.gk-foot h4{color:#F7FAF8;font-size:15px;margin:0 0 14px}
+.gk-foot ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px;margin:0;padding:0}
+.gk-foot a{color:#cfe0d8;text-decoration:none}
+.gk-foot a:hover{color:#B7F14A}
+.gk-foot-brand{display:flex;flex-direction:column;gap:12px}
+.gk-foot-brand .gk-brand b{color:#F7FAF8}
+.gk-foot-brand p{font-size:14px;max-width:270px;margin:0;line-height:1.7}
+.gk-social{display:flex;gap:12px;margin-top:16px}
+.gk-social a{width:38px;height:38px;border-radius:12px;background:rgba(247,250,248,.1);display:flex;align-items:center;justify-content:center}
+.gk-foot-bottom{border-top:1px solid rgba(247,250,248,.12);padding:16px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#9fb8ac}
+@media (max-width:900px){.gk-links{display:none}.gk-foot{grid-template-columns:1fr 1fr;padding:40px 0 28px}}
+</style>
 </head>
 <body>
-<nav class="nav"><a class="brand" href="/" style="display:flex;align-items:center;gap:10px"><img src="/assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt="Gekko Air" style="width:38px;height:38px;border-radius:50%;object-fit:cover">GEKKO AIR</a><div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap"><a href="/">בית</a><a href="/#kit">מה בערכה</a><a href="/#proof">לפני ואחרי</a><a href="/blog/">בלוג</a><a class="btn" href="/#buy">להזמנת הערכה</a></div></nav>
+<header class="site-header">
+  <div class="gk-nav">
+    <a class="gk-brand" href="/">
+      <img src="/assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt="Gekko Air">
+      <b>GEKKO AIR</b>
+    </a>
+    <nav class="gk-links" aria-label="ניווט ראשי">
+      <a href="/#problem">הבעיה</a>
+      <a href="/#kit">מה בערכה</a>
+      <a href="/#steps">איך זה עובד</a>
+      <a href="/#proof">לפני ואחרי</a>
+      <a href="/#testimonials">לקוחות</a>
+      <a href="/#faq">שאלות</a>
+      <a href="/blog/">בלוג</a>
+    </nav>
+    <a class="gk-btn" href="/#buy">להזמנת הערכה</a>
+  </div>
+</header>
 <article class="article">
 <span class="pill">מחקר שוק · ניקוי מזגן בבית</span>
 <h1>ניקוי מזגן לבד או טכנאי? למה ערכה ביתית עדיפה לתחזוקה שוטפת</h1>
@@ -93,13 +137,51 @@ body{margin:0;background:#F7FAF8;font-family:Heebo,Arial,sans-serif;color:#1F252
 <section class="faq"><h2>שאלות נפוצות</h2><h3>ניקוי מזגן לבד באמת חוסך כסף?</h3><p>כן, בעיקר כשיש כמה מזגנים בבית. במקום לשלם שוב על ביקור לכל ניקוי תחזוקה, קונים ערכה אחת ומשתמשים בה לסבב ניקוי בבית וגם לעונות הבאות. בתקלות אמיתיות עדיין מזמינים טכנאי.</p><h3>למה לא לקנות ספריי זול לניקוי מזגן?</h3><p>אפשר, אבל ספריי זול לא פותר את כל העבודה. צריך גם לאסוף מים מלוכלכים, להבריש, לשטוף, לנגב ולעבוד לפי סדר. Gekko Air מוכרת מסלול מלא, לא רק חומר.</p><h3>החומר של Gekko Air אקולוגי?</h3><p>הערכה מבוססת על חומר ניקוי אקולוגי ועדין יותר לשימוש ביתי. במקביל, באתר נשמר דיסקליימר עד לאימות הסופי של טענות התאימות והפורמולה.</p><h3>האם אפשר לנקות כמה מזגנים באותו יום?</h3><p>כן, זו אחת הסיבות לקנות ערכה ביתית. מכינים דלי ומגבת, מנקים יחידה אחת, שוטפים את הציוד לפי הצורך ועוברים למזגן הבא.</p></section>
 <h2>סיכום</h2><p>אם יש תקלה, טכנאי. אם מדובר בתחזוקה שוטפת של מזגן עילי, ריח, אבק, סוללה מלוכלכת או הכנה לקיץ, ערכה ביתית שלמה היא פתרון חכם יותר: היא זמינה, חסכונית, מתאימה לכמה מזגנים, נשארת גם לעונה הבאה ומורידה את הפחד מהבלגן.</p><p><strong>Gekko Air נבנתה בדיוק לנקודה הזאת:</strong> בקבוק אחד, ערכה אחת, מסלול אחד ברור, כדי לנקות את המזגן מבפנים בלי לחכות, בלי לנחש ובלי לשלם על ביקור בכל פעם מחדש.</p>
 </article>
-<footer style="background:#123D32;color:#cfe0d8;margin-top:56px">
-<div style="max-width:1080px;margin:0 auto;padding:44px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;font-size:14px">
-<div><div style="font-weight:900;letter-spacing:.12em;color:#F7FAF8;margin-bottom:10px">GEKKO AIR</div><p style="margin:0;line-height:1.7">ערכה ביתית לניקוי וחיטוי מזגנים. 20 דקות למזגן נקי, בלי טכנאי ובלי בלגן.</p><a href="/#buy" style="display:inline-block;background:#B7F14A;color:#123D32;padding:11px 24px;border-radius:999px;font-weight:800;margin-top:14px">להזמנת הערכה · ₪249</a></div>
-<div><div style="color:#F7FAF8;font-weight:700;margin-bottom:10px">ניווט</div><a href="/" style="display:block;color:#cfe0d8;padding:4px 0">בית</a><a href="/blog/" style="display:block;color:#cfe0d8;padding:4px 0">בלוג</a><a href="/#faq" style="display:block;color:#cfe0d8;padding:4px 0">שאלות נפוצות</a><a href="/#contact" style="display:block;color:#cfe0d8;padding:4px 0">צור קשר</a></div>
-<div><div style="color:#F7FAF8;font-weight:700;margin-bottom:10px">מידע</div><a href="/shipping/" style="display:block;color:#cfe0d8;padding:4px 0">משלוחים והחזרות</a><a href="/terms/" style="display:block;color:#cfe0d8;padding:4px 0">תקנון</a><a href="/privacy/" style="display:block;color:#cfe0d8;padding:4px 0">מדיניות פרטיות</a><a href="/accessibility/" style="display:block;color:#cfe0d8;padding:4px 0">נגישות</a></div>
-</div>
-<div style="border-top:1px solid rgba(247,250,248,.12);padding:16px 28px;text-align:center;font-size:12.5px;color:#9fb8ac">© 2026 Gekko Air · ניקיון מתחיל איפה שהאוויר מתחיל</div>
+<footer class="site-footer">
+  <div class="gk-wrap">
+    <div class="gk-foot">
+      <div class="gk-foot-brand">
+        <a class="gk-brand" href="/"><img src="/assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt=""><b>GEKKO AIR</b></a>
+        <p>ערכה ביתית לניקוי וחיטוי מזגנים, עם חומר אקולוגי ושרוול ניקוז שמשאיר את הבית נקי. 20 דקות למזגן נקי.</p>
+        <a class="gk-btn gk-btn-lime" href="/#buy">להזמנת הערכה · ₪249</a>
+      </div>
+      <div>
+        <h4>ניווט</h4>
+        <ul>
+          <li><a href="/#kit">מה בערכה</a></li>
+          <li><a href="/#steps">איך זה עובד</a></li>
+          <li><a href="/#proof">לפני ואחרי</a></li>
+          <li><a href="/#faq">שאלות נפוצות</a></li>
+          <li><a href="/blog/">בלוג</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>מידע</h4>
+        <ul>
+          <li><a href="/shipping/">משלוחים והחזרות</a></li>
+          <li><a href="/terms/">תקנון האתר</a></li>
+          <li><a href="/privacy/">מדיניות פרטיות</a></li>
+          <li><a href="/accessibility/">הצהרת נגישות</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>צור קשר</h4>
+        <ul>
+          <li><a href="https://wa.me/972500000000" target="_blank" rel="noopener">וואטסאפ</a></li>
+          <li><a href="mailto:hello@gekkoair.co.il">hello@gekkoair.co.il</a></li>
+          <li><a href="/#contact">טופס יצירת קשר</a></li>
+        </ul>
+        <div class="gk-social">
+          <a href="https://www.instagram.com/gekkoair" target="_blank" rel="noopener" aria-label="אינסטגרם"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B7F14A" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="#B7F14A" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/gekkoair" target="_blank" rel="noopener" aria-label="פייסבוק"><svg width="19" height="19" viewBox="0 0 24 24" fill="#B7F14A"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4V14h2.7v8h3.4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="gk-foot-bottom">
+      <span>© 2026 Gekko Air. כל הזכויות שמורות.</span>
+      <span>ניקיון מתחיל איפה שהאוויר מתחיל.</span>
+    </div>
+  </div>
 </footer>
 </body>
 </html>
