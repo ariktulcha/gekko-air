@@ -196,6 +196,11 @@ form.contact input,form.contact textarea{width:100%;border:1.5px solid rgba(18,6
 .form-note{font-size:12.5px;color:var(--muted);line-height:1.5}
 .hp-field{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
 form.contact input:focus,form.contact textarea:focus{outline:2px solid var(--lime);border-color:var(--green)}
+.form-status{display:none;border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.45}
+.form-status.show{display:block}
+.form-status.ok{background:#EAF6EC;color:var(--green);border:1px solid rgba(18,61,50,.14)}
+.form-status.err{background:#fff2f0;color:#8a1f11;border:1px solid rgba(138,31,17,.18)}
+form.contact.is-sending .btn{opacity:.72;cursor:wait}
 
 /* footer */
 footer{background:var(--green);color:#cfe0d8;margin-top:40px}
@@ -224,6 +229,36 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
   .hero-glow{inset:0}
   .foot{grid-template-columns:1fr 1fr;padding:44px 0 32px}
   .buy-copy h2{font-size:30px}
+}
+@media (max-width: 640px){
+  .wrap{padding:0 16px}
+  .nav{padding:10px 16px;gap:10px}
+  .brand img{width:36px;height:36px}
+  .brand b{font-size:14px;letter-spacing:.08em}
+  .nav .btn{padding:9px 14px;font-size:13px;white-space:nowrap}
+  .hero{padding:30px 0 34px;gap:26px}
+  .hero h1{font-size:32px;line-height:1.08}
+  .hero p.lead{font-size:16px}
+  .hero-ctas{display:grid;grid-template-columns:1fr;gap:10px}
+  .hero-ctas .btn,.buy-card .btn,form.contact .btn{width:100%;text-align:center}
+  .hero-media img{border-radius:20px;aspect-ratio:1.08}
+  .hero-media:after{top:10px;inset-inline-end:10px;font-size:12px;padding:6px 10px}
+  .hero-stats{position:relative;inset:auto;margin:-22px 12px 0;justify-content:space-between}
+  .strip{gap:12px;padding-bottom:36px}
+  .strip .card{align-items:flex-start;padding:16px}
+  .clean-band{margin:-10px auto 36px;gap:12px}
+  .clean-card{padding:22px;min-height:auto}
+  .clean-card h3{font-size:21px}
+  .kit-grid img{height:210px}
+  .slider-nav{display:none}
+  .shot{aspect-ratio:16/12}
+  .includes{grid-template-columns:1fr;gap:8px}
+  .buy-card{padding:24px;border-radius:20px}
+  .price{font-size:38px}
+  form.contact{padding:20px;border-radius:18px}
+  form.contact input,form.contact textarea{font-size:16px;padding:12px 13px}
+  .foot{grid-template-columns:1fr;gap:28px}
+  .foot-bottom{display:grid;gap:8px}
 }
 </style>
 </head>
@@ -546,6 +581,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
       <div><label for="cemail">אימייל</label><input id="cemail" name="email" type="email" autocomplete="email" maxlength="120" placeholder="לא חובה, אבל עוזר לנו לחזור אליכם"></div>
       <div><label for="cmsg">איך נוכל לעזור?</label><textarea id="cmsg" name="message" rows="4" required maxlength="1200"></textarea></div>
       <button class="btn" type="submit">שליחה ל־info@gekkoair.co.il</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
       <p class="form-note">הפנייה נשלחת למייל הרשמי ומועברת אוטומטית לאריק. לא נשתמש בפרטים לשיווק בלי אישור.</p>
     </form>
   </div>
@@ -619,6 +655,40 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
       var i = Math.round(Math.abs(slides.scrollLeft) / w);
       if (i !== idx && i < n) { idx = i; paint(); }
     }, 80);
+  });
+})();
+(function(){
+  var form = document.querySelector('form.contact');
+  if (!form || !window.fetch || !window.FormData) return;
+  var status = form.querySelector('.form-status');
+  var button = form.querySelector('button[type="submit"]');
+  function show(kind, text){
+    if (!status) return;
+    status.textContent = text;
+    status.className = 'form-status show ' + kind;
+  }
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    if (form.classList.contains('is-sending')) return;
+    form.classList.add('is-sending');
+    if (button) button.textContent = 'שולחים...';
+    show('', 'שולחים את ההודעה...');
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json', 'X-Requested-With': 'fetch' }
+    }).then(function(res){
+      return res.json().catch(function(){ return {}; }).then(function(data){
+        if (!res.ok || data.ok === false) throw new Error(data.message || 'השליחה נכשלה. נסו שוב או כתבו לנו ישירות למייל.');
+        show('ok', data.message || 'ההודעה נשלחה בהצלחה!');
+        form.reset();
+      });
+    }).catch(function(err){
+      show('err', err.message || 'השליחה נכשלה. נסו שוב או כתבו לנו ישירות ל־info@gekkoair.co.il.');
+    }).finally(function(){
+      form.classList.remove('is-sending');
+      if (button) button.textContent = 'שליחה ל־info@gekkoair.co.il';
+    });
   });
 })();
 </script>

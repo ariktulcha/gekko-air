@@ -20,6 +20,25 @@ function response(statusCode, body, headers = {}) {
   return { statusCode, headers: { 'Content-Type': 'text/html; charset=utf-8', ...headers }, body };
 }
 
+function jsonResponse(statusCode, payload, headers = {}) {
+  return {
+    statusCode,
+    headers: { 'Content-Type': 'application/json; charset=utf-8', ...headers },
+    body: JSON.stringify(payload),
+  };
+}
+
+function wantsJson(event) {
+  const accept = event.headers.accept || event.headers.Accept || '';
+  const requestedWith = event.headers['x-requested-with'] || event.headers['X-Requested-With'] || '';
+  return accept.includes('application/json') || requestedWith === 'fetch';
+}
+
+function contactResponse(event, statusCode, payload, html) {
+  if (wantsJson(event)) return jsonResponse(statusCode, payload);
+  return response(statusCode, html);
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return response(405, '<!doctype html><meta charset="utf-8"><body dir="rtl">רק שליחת טופס נתמכת.</body>');
@@ -29,11 +48,11 @@ exports.handler = async (event) => {
   try {
     data = parseBody(event);
   } catch (_) {
-    return response(400, '<!doctype html><meta charset="utf-8"><body dir="rtl">הטופס לא נקלט. נסו שוב.</body>');
+    return contactResponse(event, 400, { ok: false, message: 'הטופס לא נקלט. נסו שוב.' }, '<!doctype html><meta charset="utf-8"><body dir="rtl">הטופס לא נקלט. נסו שוב.</body>');
   }
 
   if (clamp(data.company, 120)) {
-    return response(303, '', { Location: '/thank-you/' });
+    return contactResponse(event, 200, { ok: true, message: 'ההודעה נשלחה בהצלחה!' }, '<!doctype html><meta charset="utf-8"><body dir="rtl"><h1>ההודעה נשלחה בהצלחה!</h1></body>');
   }
 
   const name = clamp(data.name, 80);
@@ -43,7 +62,7 @@ exports.handler = async (event) => {
   const requestId = `gekko-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 
   if (!name || !phone || !message) {
-    return response(400, '<!doctype html><meta charset="utf-8"><body dir="rtl">חסרים שם, טלפון או הודעה. חזרו לטופס ונסו שוב.</body>');
+    return contactResponse(event, 400, { ok: false, message: 'חסרים שם, טלפון או הודעה. נסו שוב.' }, '<!doctype html><meta charset="utf-8"><body dir="rtl">חסרים שם, טלפון או הודעה. חזרו לטופס ונסו שוב.</body>');
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -53,7 +72,7 @@ exports.handler = async (event) => {
 
   if (!apiKey) {
     console.error('Gekko contact missing RESEND_API_KEY', { requestId, name, phone });
-    return response(503, '<!doctype html><meta charset="utf-8"><body dir="rtl"><h1>השליחה עדיין לא פעילה</h1><p>אנא כתבו לנו ישירות ל־info@gekkoair.co.il.</p></body>');
+    return contactResponse(event, 503, { ok: false, message: 'השליחה עדיין לא פעילה. כתבו לנו ישירות ל־info@gekkoair.co.il.' }, '<!doctype html><meta charset="utf-8"><body dir="rtl"><h1>השליחה עדיין לא פעילה</h1><p>אנא כתבו לנו ישירות ל־info@gekkoair.co.il.</p></body>');
   }
 
   const html = `
@@ -87,9 +106,9 @@ exports.handler = async (event) => {
   const resultText = await resend.text();
   if (!resend.ok) {
     console.error('Resend send failed', { requestId, status: resend.status, resultText: resultText.slice(0, 500) });
-    return response(502, '<!doctype html><meta charset="utf-8"><body dir="rtl"><h1>השליחה נכשלה</h1><p>אנא כתבו לנו ישירות ל־info@gekkoair.co.il.</p></body>');
+    return contactResponse(event, 502, { ok: false, message: 'השליחה נכשלה. כתבו לנו ישירות ל־info@gekkoair.co.il.' }, '<!doctype html><meta charset="utf-8"><body dir="rtl"><h1>השליחה נכשלה</h1><p>אנא כתבו לנו ישירות ל־info@gekkoair.co.il.</p></body>');
   }
 
   console.log('Gekko contact sent', { requestId, status: resend.status });
-  return response(303, '', { Location: `/thank-you/?r=${encodeURIComponent(requestId)}` });
+  return contactResponse(event, 200, { ok: true, message: 'ההודעה נשלחה בהצלחה!', requestId }, '<!doctype html><meta charset="utf-8"><body dir="rtl"><h1>ההודעה נשלחה בהצלחה!</h1><p>נחזור אליכם בהקדם.</p></body>');
 };
