@@ -677,8 +677,12 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
     show('', 'שולחים את ההודעה...');
     fetch(endpoint, {
       method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json', 'X-Requested-With': 'fetch' }
+      body: new URLSearchParams(new FormData(form)).toString(),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'X-Requested-With': 'fetch'
+      }
     }).then(function(res){
       return res.json().catch(function(){ return {}; }).then(function(data){
         if (!res.ok || data.ok === false) throw new Error(data.message || 'השליחה נכשלה. נסו שוב או כתבו לנו ישירות למייל.');
