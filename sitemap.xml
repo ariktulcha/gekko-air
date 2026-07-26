@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://gekkoair.co.il/</loc><priority>1.0</priority></url>
-  <url><loc>https://gekkoair.co.il/blog/</loc><priority>0.8</priority></url>
-  <url><loc>https://gekkoair.co.il/blog/nikui-mazgan-atzmecha/</loc><priority>0.7</priority></url>
-  <url><loc>https://gekkoair.co.il/shipping/</loc><priority>0.3</priority></url>
-  <url><loc>https://gekkoair.co.il/terms/</loc><priority>0.3</priority></url>
-  <url><loc>https://gekkoair.co.il/privacy/</loc><priority>0.3</priority></url>
-  <url><loc>https://gekkoair.co.il/accessibility/</loc><priority>0.3</priority></url>
-  <url><loc>https://gekko-air.netlify.app/blog/kama-ole-mazgan-meluhlah/</loc><priority>0.7</priority></url>
-  <url><loc>https://gekko-air.netlify.app/blog/alergia-mazgan-yeladim/</loc><priority>0.7</priority></url>
-  <url><loc>https://gekko-air.netlify.app/blog/shapaat-mazganim/</loc><priority>0.7</priority></url>
-  <url><loc>https://gekko-air.netlify.app/blog/ovesh-shahor-mazgan/</loc><priority>0.7</priority></url>
-  <url><loc>https://gekko-air.netlify.app/blog/lishon-im-mazgan/</loc><priority>0.7</priority></url>
+  <url><loc>https://gekkoair.co.il/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/shipping/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/terms/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/privacy/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/accessibility/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/nikui-mazgan-atzmecha/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/kama-ole-mazgan-meluhlah/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/alergia-mazgan-yeladim/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/shapaat-mazganim/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/ovesh-shahor-mazgan/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/lishon-im-mazgan/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/riakh-ra-mehamazgan/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/mazgan-metaftef-mayim/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/kol-kama-zman-lenakot-mazgan/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/mazgan-lo-mekarer/</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://gekkoair.co.il/blog/sharvul-nikuz-mazgan/</loc><lastmod>2026-07-26</lastmod></url>
 </urlset>
