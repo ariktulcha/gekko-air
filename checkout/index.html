@@ -120,7 +120,7 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
   e.preventDefault();
   var f = e.target;
   var data = new URLSearchParams(new FormData(f)).toString();
-  // שליחה ל-Netlify Forms (נקלט כליד); גם אם נכשל מקומית — ממשיכים לשלב 2
+  // שליחה ל-Netlify Forms (נקלט כליד); גם אם נכשל מקומית, ממשיכים לשלב 2
   fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data}).catch(function(){});
   document.getElementById('step1').style.display = 'none';
   document.getElementById('step2').style.display = 'block';
