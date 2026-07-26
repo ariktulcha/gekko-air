@@ -725,7 +725,12 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
         form.reset();
       });
     }).catch(function(err){
-      show('err', err.message || 'השליחה נכשלה. נסו שוב או כתבו לנו ישירות ל־info@gekkoair.co.il.');
+      // גיבוי: פתיחת מייל מוכן עם תוכן הפנייה, כדי שההודעה לא תלך לאיבוד
+      var fd = new FormData(form);
+      var subject = encodeURIComponent('פנייה מהאתר — ' + (fd.get('name') || ''));
+      var bodyTxt = encodeURIComponent('שם: ' + (fd.get('name') || '') + '\nטלפון: ' + (fd.get('phone') || '') + '\nאימייל: ' + (fd.get('email') || '') + '\n\n' + (fd.get('message') || ''));
+      show('err', (err.message || 'השליחה נכשלה.') + ' פותחים לך מייל מוכן לשליחה...');
+      window.location.href = 'mailto:info@gekkoair.co.il?subject=' + subject + '&body=' + bodyTxt;
     }).finally(function(){
       form.classList.remove('is-sending');
       if (button) button.textContent = 'שליחה ל־info@gekkoair.co.il';
