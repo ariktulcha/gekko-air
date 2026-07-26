@@ -1,4 +1,4 @@
-# Gekko Air — Resend + Netlify email setup
+# Gekko Air — Resend, Netlify, Airtable setup
 
 ## Netlify environment variables
 
@@ -7,11 +7,57 @@ Set these in Netlify → Site configuration → Environment variables, then rede
 ```env
 RESEND_API_KEY=re_***
 RESEND_FROM="Gekko Air <info@gekkoair.co.il>"
-RESEND_NOTIFY_TO=ariktulcha@gmail.com
+RESEND_NOTIFY_TO=gekkoclean.air@gmail.com
 RESEND_REPLY_TO=info@gekkoair.co.il
+
+# Optional: separate recipient for checkout/order-step notifications.
+# If omitted, ORDER_NOTIFY_TO falls back to RESEND_NOTIFY_TO.
+ORDER_NOTIFY_TO=gekkoclean.air@gmail.com
+
+# Airtable checkout leads
+AIRTABLE_ACCESS_TOKEN=pat***
+AIRTABLE_BASE_ID=appm9KxX1DklkhRUK
+AIRTABLE_TABLE_ID=tbllePRiqRj9KxRpY
+AIRTABLE_VIEW_URL="https://airtable.com/appm9KxX1DklkhRUK/tbllePRiqRj9KxRpY/viwMsQwr3gaBX3w7U?blocks=hide"
+# Default behavior tries to create missing columns when the token has schema.bases:write.
+# Set to false if you prefer to manage Airtable columns manually.
+AIRTABLE_AUTO_CREATE_FIELDS=true
 ```
 
-The contact form posts to `/.netlify/functions/contact`. A successful submit sends the notification through Resend **from** `info@gekkoair.co.il` and **to** `ariktulcha@gmail.com`.
+## Contact form behavior
+
+The homepage contact form posts to `/.netlify/functions/contact`.
+
+On successful submit:
+
+1. An internal notification is sent to `RESEND_NOTIFY_TO` — default `gekkoclean.air@gmail.com`.
+2. If the visitor entered an email address, they receive a branded automatic confirmation email.
+3. The customer email includes a clear CTA button to buy the kit: `/checkout/`.
+
+## Checkout part 1 behavior
+
+The checkout details form posts to `/.netlify/functions/order-intake` when the customer finishes step 1.
+
+On successful submit:
+
+1. A record is created in Airtable base `appm9KxX1DklkhRUK`, table `tbllePRiqRj9KxRpY`.
+2. A branded internal email is sent to `ORDER_NOTIFY_TO` or `RESEND_NOTIFY_TO`, default `gekkoclean.air@gmail.com`.
+3. The customer is moved to the confirmation panel on the page.
+
+Expected Airtable columns:
+
+- `שם מלא`
+- `טלפון`
+- `אימייל`
+- `מוצר`
+- `מחיר`
+- `שעה`
+- `תאריך יצירה`
+- `מקור`
+- `סטטוס`
+- `מספר ליד`
+
+If `AIRTABLE_AUTO_CREATE_FIELDS=true` and the Airtable token has `schema.bases:read` + `schema.bases:write`, the function will try to create missing columns automatically. The token also needs `data.records:write` for inserting leads.
 
 ## Resend sending domain DNS
 
@@ -19,19 +65,21 @@ In Resend, add/verify the domain `gekkoair.co.il`, then add the DNS records Rese
 
 ## Direct email to info@gekkoair.co.il
 
-Important: Resend sending verification does not automatically create a receiving inbox. To make normal emails sent directly to `info@gekkoair.co.il` arrive at `ariktulcha@gmail.com`, configure one receiving/forwarding layer:
+Important: Resend sending verification does not automatically create a receiving inbox. To make normal emails sent directly to `info@gekkoair.co.il` arrive at Gmail, configure one receiving/forwarding layer:
 
-- Cloudflare Email Routing: route `info@gekkoair.co.il` → `ariktulcha@gmail.com`; or
-- Google Workspace / Zoho / registrar email forwarding with alias `info@gekkoair.co.il`; or
-- Resend inbound routing if enabled on the account, with forwarding/webhook configured to Arik.
+- Cloudflare Email Routing; or
+- Google Workspace / Zoho / registrar email forwarding; or
+- Resend inbound routing if enabled on the account, with forwarding/webhook configured.
 
-After routing is configured, test with a real email from an external mailbox to `info@gekkoair.co.il` and confirm it lands in `ariktulcha@gmail.com` Inbox/Spam. Provider acceptance alone is not inbox-delivery proof.
+After routing is configured, test with a real email from an external mailbox and confirm it lands in Inbox/Spam. Provider acceptance alone is not inbox-delivery proof.
 
 ## Production test checklist
 
 1. Env vars are set in Netlify and production was redeployed.
 2. `https://gekkoair.co.il/.netlify/functions/contact` returns 405 on GET.
 3. Submit the contact form with a unique marker.
-4. Netlify function logs show `Gekko contact sent` and a request ID.
-5. Arik confirms the message arrived in Gmail.
-6. Send a normal external email to `info@gekkoair.co.il` and confirm the mailbox forward works.
+4. Submit checkout step 1 with a unique marker.
+5. Netlify function logs show `Gekko contact sent` and `Gekko order intake saved and notified`.
+6. Airtable contains the checkout record with `שעה` filled.
+7. `gekkoclean.air@gmail.com` receives the contact/order notifications.
+8. The test contact customer email receives the branded automatic confirmation.

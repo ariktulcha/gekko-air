@@ -58,6 +58,12 @@ input:focus{outline:2px solid #B7F14A;border-color:#123D32}
 #step2 h2{color:#123D32;font-size:23px;margin-bottom:10px}
 #step2 p{font-size:15.5px;color:#3d4a45;max-width:400px;margin:0 auto 8px}
 #step2 .note{font-size:13px;color:#8a968f;margin-top:14px}
+.form-status{display:none;border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.45;margin-top:4px}
+.form-status.show{display:block}
+.form-status.ok{background:#EAF6EC;color:#123D32;border:1px solid rgba(18,61,50,.14)}
+.form-status.err{background:#fff2f0;color:#8a1f11;border:1px solid rgba(138,31,17,.18)}
+.hp-field{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
+form.is-sending .btn{opacity:.72;cursor:wait}
 .back-link{display:block;text-align:center;margin-top:22px;font-size:14px;font-weight:600}
 </style>
 </head>
@@ -90,13 +96,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="panel" id="step1">
     <h1>לאן לשלוח את הערכה?</h1>
     <p class="sub">משאירים פרטים, ואנחנו משלימים איתכם את ההזמנה.</p>
-    <form name="order" method="POST" data-netlify="true" id="orderForm">
+    <form name="order" method="POST" data-endpoint="/.netlify/functions/order-intake" id="orderForm" novalidate>
       <input type="hidden" name="form-name" value="order">
       <input type="hidden" name="product" value="ערכת Gekko Air מבצע ₪199">
+      <input type="hidden" name="source" value="checkout-step-1">
+      <p class="hp-field"><label>לא למלא <input name="company" tabindex="-1" autocomplete="off"></label></p>
       <div><label for="oname">שם מלא</label><input id="oname" name="name" required autocomplete="name" placeholder="ישראל ישראלי"></div>
       <div><label for="ophone">טלפון נייד</label><input id="ophone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="050-0000000" pattern="[0-9\-+ ]{9,15}"></div>
       <div><label for="omail">אימייל</label><input id="omail" name="email" type="email" required autocomplete="email" placeholder="you@email.com"></div>
       <button class="btn" type="submit">המשך לאישור ההזמנה ←</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
     </form>
     <div class="trust">
       <span>משלוח חינם עד הבית תוך 3–5 ימי עסקים</span>
@@ -119,14 +128,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 document.getElementById('orderForm').addEventListener('submit', function(e){
   e.preventDefault();
   var f = e.target;
-  var data = new URLSearchParams(new FormData(f)).toString();
-  // שליחה ל-Netlify Forms (נקלט כליד); גם אם נכשל מקומית, ממשיכים לשלב 2
-  fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data}).catch(function(){});
-  document.getElementById('step1').style.display = 'none';
-  document.getElementById('step2').style.display = 'block';
-  document.getElementById('sb1').classList.remove('on');
-  document.getElementById('sb2').classList.add('on');
-  window.scrollTo({top:0});
+  var button = f.querySelector('.btn');
+  var status = f.querySelector('.form-status');
+  var endpoint = f.getAttribute('data-endpoint') || '/.netlify/functions/order-intake';
+  function show(kind, text){
+    if (!status) return;
+    status.textContent = text;
+    status.className = 'form-status show ' + kind;
+  }
+  function showStep2(){
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    document.getElementById('sb1').classList.remove('on');
+    document.getElementById('sb2').classList.add('on');
+    window.scrollTo({top:0});
+  }
+  if (!f.reportValidity()) return false;
+  if (f.classList.contains('is-sending')) return false;
+  f.classList.add('is-sending');
+  if (button) button.textContent = 'שומרים את הפרטים...';
+  show('', 'שומרים את הפרטים ומעדכנים את הצוות...');
+  fetch(endpoint, {
+    method:'POST',
+    headers:{
+      'Accept':'application/json',
+      'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
+      'X-Requested-With':'fetch'
+    },
+    body:new URLSearchParams(new FormData(f)).toString()
+  }).then(function(res){
+    return res.json().catch(function(){ return {}; }).then(function(data){
+      if (!res.ok || data.ok === false) throw new Error(data.message || 'לא הצלחנו לשמור את הפרטים. נסו שוב.');
+      show('ok', data.message || 'הפרטים נשמרו.');
+      showStep2();
+    });
+  }).catch(function(err){
+    show('err', (err.message || 'לא הצלחנו לשמור את הפרטים.') + ' אפשר לנסות שוב או לפנות אלינו במייל.');
+  }).finally(function(){
+    f.classList.remove('is-sending');
+    if (button) button.textContent = 'המשך לאישור ההזמנה ←';
+  });
+  return false;
 });
 </script>
 </body>
