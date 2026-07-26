@@ -616,7 +616,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div><label for="cphone">טלפון</label><input id="cphone" name="phone" type="tel" required autocomplete="tel" maxlength="30"></div>
       <div><label for="cemail">אימייל</label><input id="cemail" name="email" type="email" autocomplete="email" maxlength="120" placeholder="לא חובה, אבל עוזר לנו לחזור אליכם"></div>
       <div><label for="cmsg">איך נוכל לעזור?</label><textarea id="cmsg" name="message" rows="4" required maxlength="1200"></textarea></div>
-      <button class="btn" type="button">שליחה ל־info@gekkoair.co.il</button>
+      <button class="btn" type="button">שלח</button>
       <p class="form-status" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -738,7 +738,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.location.href = 'mailto:info@gekkoair.co.il?subject=' + subject + '&body=' + bodyTxt;
     }).finally(function(){
       form.classList.remove('is-sending');
-      if (button) button.textContent = 'שליחה ל־info@gekkoair.co.il';
+      if (button) button.textContent = 'שלח';
     });
     return false;
   }
