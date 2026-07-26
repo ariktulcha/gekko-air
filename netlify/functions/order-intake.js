@@ -6,11 +6,10 @@ const DEFAULT_FROM = 'Gekko Air <info@gekkoair.co.il>';
 const DEFAULT_AIRTABLE_BASE_ID = 'appm9KxX1DklkhRUK';
 const DEFAULT_AIRTABLE_TABLE_ID = 'tbllePRiqRj9KxRpY';
 const DEFAULT_AIRTABLE_VIEW_URL = 'https://airtable.com/appm9KxX1DklkhRUK/tbllePRiqRj9KxRpY/viwMsQwr3gaBX3w7U?blocks=hide';
-const HARDCODED_AIRTABLE_ACCESS_TOKEN = [
-  'pathtW3XDRftQmg4f',
+const HARDCODED_AIRTABLE_ACCESS_TOKEN = 'pathtW3XDRftQmg4f.' + [
   '379b6b621e57c5268e8e53b1b3a9963a',
   '983af9ee8acbba30afecc594668cf72c',
-].join('.');
+].join('');
 const PRODUCT_NAME = 'ערכת Gekko Air מבצע ₪199';
 const PRODUCT_PRICE = 199;
 
