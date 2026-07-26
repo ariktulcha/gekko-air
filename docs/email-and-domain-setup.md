@@ -15,13 +15,9 @@ RESEND_REPLY_TO=info@gekkoair.co.il
 ORDER_NOTIFY_TO=gekkoclean.air@gmail.com
 
 # Airtable checkout leads
-AIRTABLE_ACCESS_TOKEN=pat***
-AIRTABLE_BASE_ID=appm9KxX1DklkhRUK
-AIRTABLE_TABLE_ID=tbllePRiqRj9KxRpY
-AIRTABLE_VIEW_URL="https://airtable.com/appm9KxX1DklkhRUK/tbllePRiqRj9KxRpY/viwMsQwr3gaBX3w7U?blocks=hide"
-# Default behavior tries to create missing columns when the token has schema.bases:write.
-# Set to false if you prefer to manage Airtable columns manually.
-AIRTABLE_AUTO_CREATE_FIELDS=true
+# Airtable is intentionally hardcoded in netlify/functions/order-intake.js:
+# base appm9KxX1DklkhRUK, table tbllePRiqRj9KxRpY, view viwMsQwr3gaBX3w7U.
+# No Netlify Airtable env vars are required for the current implementation.
 ```
 
 ## Contact form behavior
