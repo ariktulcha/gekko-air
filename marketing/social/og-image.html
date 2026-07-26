@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:630px;font-family:'Heebo',sans-serif;background:#123D32;overflow:hidden;display:flex}
+.left{flex:1.1;padding:64px 64px 64px 40px;display:flex;flex-direction:column;justify-content:center;gap:22px;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:52px;height:52px;border-radius:50%}
+.brand b{color:#F7FAF8;font-weight:800;font-size:24px;letter-spacing:.13em}
+h1{color:#F7FAF8;font-size:58px;line-height:1.14;font-weight:900}
+h1 em{font-style:normal;color:#B7F14A}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.pill{background:rgba(183,241,74,.14);border:1.5px solid rgba(183,241,74,.5);color:#B7F14A;border-radius:999px;padding:9px 20px;font-size:20px;font-weight:600}
+.price{display:flex;align-items:center;gap:16px}
+.price b{background:#B7F14A;color:#123D32;font-size:26px;font-weight:900;border-radius:999px;padding:13px 30px}
+.price span{color:#BDEBFF;font-size:19px;font-weight:600}
+.right{flex:1;position:relative}
+.right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.right:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#123D32 0%,rgba(18,61,50,0) 40%);z-index:1}
+.wave{position:absolute;inset:0;background:radial-gradient(700px 400px at 10% 110%,rgba(183,241,74,.16),transparent 60%);z-index:1;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="wave"></div>
+<div class="left">
+  <div class="brand"><img src="../../assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt=""><b>GEKKO AIR</b></div>
+  <h1>לנקות את המזגן מבפנים. <em>בלי טכנאי.</em></h1>
+  <div class="row">
+    <span class="pill">20 דקות</span>
+    <span class="pill">חומר אקולוגי</span>
+    <span class="pill">בלי לכלוך בבית</span>
+  </div>
+  <div class="price"><b>₪249</b><span>משלוח חינם עד הבית</span></div>
+</div>
+<div class="right"><img src="../../assets/kit-real.jpg" alt=""></div>
+</body>
+</html>

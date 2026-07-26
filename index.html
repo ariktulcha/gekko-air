@@ -10,7 +10,11 @@
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="Gekko Air: לנקות את המזגן מבפנים. בלי טכנאי.">
 <meta property="og:description" content="ערכה ביתית מלאה לניקוי וחיטוי מזגנים: חומר אקולוגי, מרסס, מברשות ושרוול ניקוז. ₪249, משלוח חינם.">
-<meta property="og:image" content="assets/kit-real.jpg">
+<meta property="og:image" content="https://gekko-air.netlify.app/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -214,6 +218,24 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
 .foot-brand p{font-size:14px;max-width:260px}
 .foot-bottom{border-top:1px solid rgba(247,250,248,.12);padding:18px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#9fb8ac}
 
+
+/* video placeholder */
+.video-frame{position:relative;max-width:860px;margin:44px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -28px rgba(18,61,50,.4)}
+.video-frame img{width:100%;height:340px;object-fit:cover;filter:brightness(.55)}
+.video-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.video-overlay .play{width:64px;height:64px;border-radius:50%;background:#B7F14A;color:#123D32;display:flex;align-items:center;justify-content:center;font-size:22px;padding-inline-start:4px}
+.video-overlay b{color:#fff;font-size:20px}
+.video-overlay .video-sub{color:rgba(255,255,255,.85);font-size:13.5px}
+/* sticky mobile buy bar */
+.buybar{display:none}
+@media (max-width:900px){
+  .buybar{display:flex;position:fixed;bottom:0;inset-inline:0;z-index:60;background:#123D32;padding:10px 16px calc(10px + env(safe-area-inset-bottom));align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -8px 30px -12px rgba(0,0,0,.35)}
+  .buybar .p{color:#F7FAF8;font-size:13.5px;line-height:1.3}
+  .buybar .p b{color:#B7F14A;font-size:17px}
+  .buybar a{background:#B7F14A;color:#123D32;font-weight:800;font-size:15px;border-radius:999px;padding:12px 22px;white-space:nowrap}
+  body{padding-bottom:66px}
+  .video-frame img{height:220px}
+}
 /* mobile */
 @media (max-width: 900px){
   h2{font-size:28px}
@@ -288,11 +310,10 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
 <main>
 <section class="wrap hero">
   <div class="hero-col">
-    <span class="hero-badge">ערכה ביתית לניקוי וחיטוי מזגנים</span>
     <h1>לנקות את המזגן מבפנים. בלי טכנאי.</h1>
     <p class="lead">אבק, עובש וריחות מצטברים בתוך המזגן, בדיוק איפה שהאוויר שלכם עובר. ערכת Gekko Air נותנת לכם לנקות ולחטא הכול לבד, ב־20 דקות, בלי לטנף את הבית.</p>
     <div class="hero-ctas">
-      <a class="btn" href="#buy">לרכישת הערכה · ₪249</a>
+      <a class="btn" href="/checkout/">לרכישת הערכה · ₪249</a>
       <a class="btn btn-ghost" href="#steps">איך זה עובד</a>
     </div>
     <div class="hero-points">
@@ -392,6 +413,15 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
       <div class="card"><div class="how-num">2</div><b>מבריישים וממתינים 5 דקות</b><p>עוברים עם המברשות על הצלעות והמאוורר ומשחררים את ההצטברויות. בסוף נותנים לחומר לעבוד 5 דקות.</p></div>
       <div class="card"><div class="how-num">3</div><b>שוטפים ומרעננים</b><p>שוטפים עם מרסס המים, מנגבים ומפעילים את המזגן לייבוש. שרוול הניקוז אוסף את הכול החוצה.</p></div>
     </div>
+    <div class="video-frame">
+      <!-- TODO: כשיש סרטון — להחליף ב-<video controls> או embed יוטיוב -->
+      <img src="assets/sleeve-action.jpg" alt="שרוול הניקוז בפעולה במהלך ניקוי מזגן" loading="lazy">
+      <div class="video-overlay">
+        <span class="play">▶</span>
+        <b>סרטון ההדרכה המלא — בקרוב כאן</b>
+        <span class="video-sub">בינתיים: כל שלב בערכה מגיע עם סרטון קצר בסריקת QR</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -431,7 +461,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
         <button class="sdot" aria-label="שקופית 3" onclick="baTo(2)"></button>
       </div>
     </div>
-    <div class="proof-cta"><a class="btn" href="#buy">אני רוצה מזגן נקי כזה</a></div>
+    <div class="proof-cta"><a class="btn" href="/checkout/">אני רוצה מזגן נקי כזה</a></div>
   </div>
 </section>
 
@@ -512,7 +542,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
         <span class="verified">✓ רכישה מאומתת</span>
       </div>
     </div>
-    <div class="testi-cta"><a class="btn" href="#buy">לרכישת הערכה</a></div>
+    <div class="testi-cta"><a class="btn" href="/checkout/">לרכישת הערכה</a></div>
   </div>
 </section>
 
@@ -533,7 +563,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
     </div>
     <div class="buy-card">
       <div class="price-row"><span class="price">₪249</span><span class="price-note">מחיר השקה · משלוח חינם</span></div>
-      <a class="btn" href="https://wa.me/972500000000?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%96%D7%9E%D7%99%D7%9F%20%D7%A2%D7%A8%D7%9B%D7%AA%20Gekko%20Air" target="_blank" rel="noopener">לרכישת הערכה עכשיו</a>
+      <a class="btn" href="/checkout/">לרכישת הערכה עכשיו</a>
       <a class="btn btn-ghost" href="#contact" style="text-align:center">או השאירו פרטים ונחזור אליכם</a>
       <div class="buy-trust">
         <span>אלפי ערכות כבר נרכשו ברחבי הארץ</span>
@@ -637,6 +667,11 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
     </div>
   </div>
 </footer>
+
+<div class="buybar">
+  <div class="p"><b>₪249</b> · משלוח חינם</div>
+  <a href="/checkout/">בצעו רכישה עכשיו</a>
+</div>
 
 <script>
 (function(){
