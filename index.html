@@ -35,6 +35,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {"@type":"Question","name":"הלכלוך והמים לא יטנפו את הבית?","acceptedAnswer":{"@type":"Answer","text":"לא. זה בדיוק התפקיד של שרוול הניקוז שבערכה. הוא נצמד סביב המזגן ואוסף את כל הלכלוך והמים אל מחוץ לבית."}},
 {"@type":"Question","name":"האם החומר בטוח למזגן ולמשפחה?","acceptedAnswer":{"@type":"Answer","text":"החומר אקולוגי ועדין לצלעות אלומיניום, לפלסטיק ולמשטחים מצופים, ומיועד לשימוש ביתי."}},
 {"@type":"Question","name":"לכמה מזגנים מספיקה הערכה?","acceptedAnswer":{"@type":"Answer","text":"הכלים רב־פעמיים לשנים. בקבוק החומר מספיק למספר ניקויים, וניתן להזמין מילויים בנפרד."}},
+{"@type":"Question","name":"האם הערכה מתאימה למזגן שלי?","acceptedAnswer":{"@type":"Answer","text":"הערכה מתאימה לכל מזגן עילי ביתי, מכל מותג. שרוול הניקוז גמיש ונצמד לכל רוחב יחידה סטנדרטי."}},
+{"@type":"Question","name":"מתי אקבל את הערכה?","acceptedAnswer":{"@type":"Answer","text":"המשלוח יוצא תוך יום עסקים ומגיע עד הבית תוך 3 עד 5 ימי עסקים, חינם."}},
 {"@type":"Question","name":"מתי בכל זאת צריך טכנאי?","acceptedAnswer":{"@type":"Answer","text":"בתקלות אמיתיות: חוסר גז, בעיות מדחס או חשמל. לתחזוקה וניקוי שוטף, הערכה מספיקה."}}]}
 </script>
 <style>
@@ -150,6 +152,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(247,250,248,.94);backdro
 .slider-nav.prev{inset-inline-start:-16px}
 .slider-nav.next{inset-inline-end:-16px}
 .slider-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.swipe-hint{display:none;text-align:center;font-size:12.5px;color:#8a968f;margin-top:10px}
 .sdot{width:9px;height:9px;border-radius:50%;background:rgba(18,61,50,.2);border:none;cursor:pointer;padding:0}
 .sdot.on{background:var(--green);width:22px;border-radius:999px}
 .proof-note{text-align:center;font-size:13px;color:#8a968f;margin-top:6px}
@@ -251,6 +254,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
   .hero h1{font-size:34px}
   .strip,.kit-grid,.how-grid,.clean-band{grid-template-columns:1fr}
   .m-hide{display:none}
+  .swipe-hint{display:block}
   .testi-wall{columns:1}
   .problem-grid,.buy-box,.contact-grid,.pair{grid-template-columns:1fr}
   .pair{gap:12px;margin-bottom:12px}
@@ -350,7 +354,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="wrap strip">
   <div class="card"><span class="num">01</span><div><b>מרססים</b><span>מרססים בנדיבות את החומר האקולוגי החזק שלנו</span></div></div>
-  <div class="card"><span class="num">02</span><div><b>מבריישים וממתינים</b><span>מורידים את הלכלוך וממתינים 5 דקות שהחומר יעבוד</span></div></div>
+  <div class="card"><span class="num">02</span><div><b>מברישים וממתינים</b><span>מורידים את הלכלוך וממתינים 5 דקות שהחומר יעבוד</span></div></div>
   <div class="card"><span class="num">03</span><div><b>שוטפים</b><span>מרססים מים וכל הלכלוך יורד בצורה נקייה אל השרוול</span></div></div>
 </div>
 
@@ -462,6 +466,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <button class="slider-nav prev" aria-label="הקודם" onclick="baGo(-1)">‹</button>
       <button class="slider-nav next" aria-label="הבא" onclick="baGo(1)">›</button>
+      <p class="swipe-hint">← החליקו לזוג הבא</p>
       <div class="slider-dots" id="baDots">
         <button class="sdot on" aria-label="שקופית 1" onclick="baTo(0)"></button>
         <button class="sdot" aria-label="שקופית 2" onclick="baTo(1)"></button>
@@ -575,7 +580,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span>אלפי ערכות כבר נרכשו ברחבי הארץ</span>
         <span>משלוח חינם עד הבית תוך 3–5 ימי עסקים</span>
         <span>14 יום להחזרה בהתאם לחוק הגנת הצרכן</span>
-        <span>תשלום מאובטח: אשראי, Bit או PayBox</span>
+        <span>התשלום מושלם בשיחה, באמצעי מאובטח לבחירתכם</span>
       </div>
     </div>
   </div>
@@ -593,6 +598,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <details><summary>הלכלוך והמים לא יטנפו לי את הבית?</summary><p>לא. זה בדיוק התפקיד של שרוול הניקוז. הוא נצמד סביב המזגן, אוסף כל טיפה וכל גרגר אבק, ומנקז הכול לדלי. הקיר והרצפה נשארים נקיים.</p></details>
       <details><summary>החומר בטוח למזגן ולמשפחה?</summary><p>החומר אקולוגי ועדין לצלעות האלומיניום, לפלסטיק ולמשטחים מצופים. בלי ריח כימיקלים חריף באוויר שנושמים.</p></details>
       <details><summary>לכמה מזגנים מספיקה הערכה?</summary><p>הכלים (מרסס, מברשות, שרוול, מטליות) רב־פעמיים לשנים. בקבוק החומר מספיק למספר ניקויים, ואפשר להזמין מילויים בנפרד.</p></details>
+      <details><summary>האם הערכה מתאימה למזגן שלי?</summary><p>הערכה מתאימה לכל מזגן עילי ביתי (המזגן הנפוץ בישראל), מכל מותג: אלקטרה, תדיראן, טורנדו ואחרים. שרוול הניקוז גמיש ונצמד לכל רוחב יחידה סטנדרטי. למזגן מיני מרכזי או נסתר, כתבו לנו לפני ההזמנה.</p></details>
+      <details><summary>מתי אקבל את הערכה?</summary><p>המשלוח יוצא תוך יום עסקים ומגיע עד הבית תוך 3 עד 5 ימי עסקים, חינם. תקבלו מספר מעקב ברגע שהחבילה בדרך.</p></details>
       <details><summary>מתי בכל זאת צריך טכנאי?</summary><p>בתקלות אמיתיות: חוסר גז, בעיית מדחס, תקלת חשמל. בשביל תחזוקה וניקוי שוטף, הערכה מספיקה. אנחנו לא נגד טכנאים. אנחנו נגד לשלם ביקור מלא על פעולה שאפשר לעשות לבד.</p></details>
     </div>
   </div>
@@ -628,7 +635,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="foot">
       <div class="foot-brand">
         <a class="brand" href="/"><img src="assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt=""><b>GEKKO AIR</b></a>
-        <p>ערכה ביתית לניקוי וחיטוי מזגנים, עם חומר אקולוגי ושרוול ניקוז שמשאיר את הבית נקי. ניקיון מתחיל איפה שהאוויר מתחיל.</p>
+        <p>ערכה ביתית לניקוי וחיטוי מזגנים, עם חומר אקולוגי ושרוול ניקוז שמשאיר את הבית נקי.</p>
       </div>
       <div>
         <h4>ניווט</h4>
