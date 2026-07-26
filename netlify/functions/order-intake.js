@@ -89,6 +89,26 @@ function internalOrderHtml({ name, phone, email, product, requestId, israelTime,
   });
 }
 
+function customerOrderHtml({ name, product, requestId }) {
+  return brandedShell({
+    title: 'קיבלנו את פרטי ההזמנה שלך',
+    preheader: 'הפרטים שלך נקלטו ב-Gekko Air — נחזור אליך בהקדם להשלמת ההזמנה.',
+    body: `
+      <p style="margin:0 0 14px;font-size:17px;line-height:1.8">היי ${escapeHtml(name)},</p>
+      <p style="margin:0 0 18px;font-size:16px;line-height:1.8;color:#3d4a45">קיבלנו את הפרטים שלך להזמנת <strong>${escapeHtml(product)}</strong>. הצוות שלנו יחזור אליך בהקדם כדי להשלים את התשלום, המשלוח וכל פרט חסר.</p>
+      <div style="background:#F0F7F2;border:1px solid #d9e7df;border-radius:16px;padding:16px;margin:0 0 20px">
+        <strong style="display:block;margin-bottom:6px;color:#123D32">מה קורה עכשיו?</strong>
+        <span style="color:#3d4a45;line-height:1.7">הפרטים נשמרו אצלנו, אין צורך למלא שוב את הטופס. אם יש שאלה דחופה אפשר להשיב למייל הזה.</span>
+      </div>
+      <div style="text-align:center;margin:26px 0">
+        <a href="https://gekkoair.co.il/" style="display:inline-block;background:#123D32;color:#B7F14A;text-decoration:none;padding:15px 30px;border-radius:999px;font-weight:900;font-size:16px">חזרה לאתר Gekko Air</a>
+      </div>
+      <p style="margin:0;color:#5a6963;font-size:13px">מספר הזמנה/ליד: ${escapeHtml(requestId)}</p>
+    `,
+    footer: 'המייל נשלח אוטומטית לאחר השארת פרטים בצ׳קאאוט. עדיין לא בוצע חיוב.',
+  });
+}
+
 async function sendEmail(apiKey, payload) {
   const resend = await fetch(RESEND_ENDPOINT, {
     method: 'POST',
@@ -242,19 +262,29 @@ exports.handler = async (event) => {
   }
 
   try {
-    await sendEmail(apiKey, {
-      from,
-      to: notifyTo,
-      subject: `לקוח סיים חלק 1 בצ׳קאאוט · ${name} · ${requestId}`,
-      html: internalOrderHtml({ name, phone, email, product, requestId, israelTime, airtableUrl: airtable.url }),
-      text: `לקוח סיים חלק 1 בצ׳קאאוט\nמספר ליד: ${requestId}\nשם: ${name}\nטלפון: ${phone}\nאימייל: ${email}\nמוצר: ${product}\nמחיר: ₪${PRODUCT_PRICE}\nשעה: ${israelTime.display}\nAirtable: ${airtable.url}`,
-      reply_to: replyTo,
-    });
+    await Promise.all([
+      sendEmail(apiKey, {
+        from,
+        to: notifyTo,
+        subject: `לקוח סיים חלק 1 בצ׳קאאוט · ${name} · ${requestId}`,
+        html: internalOrderHtml({ name, phone, email, product, requestId, israelTime, airtableUrl: airtable.url }),
+        text: `לקוח סיים חלק 1 בצ׳קאאוט\nמספר ליד: ${requestId}\nשם: ${name}\nטלפון: ${phone}\nאימייל: ${email}\nמוצר: ${product}\nמחיר: ₪${PRODUCT_PRICE}\nשעה: ${israelTime.display}\nAirtable: ${airtable.url}`,
+        reply_to: replyTo,
+      }),
+      sendEmail(apiKey, {
+        from,
+        to: [email],
+        subject: 'קיבלנו את פרטי ההזמנה שלך ל-Gekko Air 🦎',
+        html: customerOrderHtml({ name, product, requestId }),
+        text: `היי ${name},\nקיבלנו את הפרטים שלך להזמנת ${product}. נחזור אליך בהקדם להשלמת התשלום והמשלוח.\nמספר הזמנה/ליד: ${requestId}\nhttps://gekkoair.co.il/`,
+        reply_to: process.env.RESEND_REPLY_TO || 'info@gekkoair.co.il',
+      }),
+    ]);
   } catch (err) {
-    console.error('Order notification email failed after Airtable save', { requestId, status: err.status, resultText: String(err.resultText || '').slice(0, 500), airtableRecordId: airtable.recordId });
+    console.error('Order email failed after Airtable save', { requestId, status: err.status, resultText: String(err.resultText || '').slice(0, 500), airtableRecordId: airtable.recordId });
     return jsonResponse(200, { ok: true, message: 'הפרטים נשמרו. נחזור אליך בקרוב.', requestId, airtableRecordId: airtable.recordId, emailWarning: true });
   }
 
-  console.log('Gekko order intake saved and notified', { requestId, airtableRecordId: airtable.recordId, notifyTo });
+  console.log('Gekko order intake saved and notified', { requestId, airtableRecordId: airtable.recordId, notifyTo, customerCopy: email });
   return jsonResponse(200, { ok: true, message: 'הפרטים נשמרו. נחזור אליך בקרוב.', requestId, airtableRecordId: airtable.recordId });
 };

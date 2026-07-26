@@ -38,7 +38,8 @@ On successful submit:
 
 1. A record is created in Airtable base `appm9KxX1DklkhRUK`, table `tbllePRiqRj9KxRpY`.
 2. A branded internal email is sent to `ORDER_NOTIFY_TO` or `RESEND_NOTIFY_TO`, default `gekkoclean.air@gmail.com`.
-3. The customer is moved to the confirmation panel on the page.
+3. A branded customer confirmation email is sent to the email address entered in checkout.
+4. The customer is moved to the confirmation panel on the page.
 
 Expected Airtable columns:
 
