@@ -11,7 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gekko Air | ערכת ניקוי מזגנים ביתית. לנקות את המזגן מבפנים, בלי טכנאי</title>
-<meta name="description" content="ערכת Gekko Air לניקוי וחיטוי המזגן בבית: חומר אקולוגי, מרסס לחץ, מברשות ושרוול ניקוז שאוסף את כל הלכלוך. 20 דקות למזגן נקי. מבצע עד סוף יולי: ₪199 במקום ₪249, עם משלוח חינם.">
+<meta name="description" content="ערכת Gekko Air לניקוי וחיטוי המזגן בבית: חומר אקולוגי, מרסס לחץ, מברשות ושרוול ניקוז שאוסף את כל הלכלוך. 20 דקות למזגן נקי. הנחת השקה עד ה־1.8: ₪199 במקום ₪249, עם משלוח חינם.">
 <link rel="canonical" href="https://gekkoair.co.il/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
@@ -176,7 +176,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(247,250,248,.94);backdro
 .testi-cta{display:flex;justify-content:center;margin-top:26px}
 
 /* buy */
-.buy-box{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.buy-box{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"copy card" "inc card";gap:24px 48px;align-items:center}
+.buy-copy{grid-area:copy}
+.buy-card{grid-area:card}
+.includes{grid-area:inc}
 .buy-copy h2{color:var(--bg);font-size:38px}
 .buy-copy>p{font-size:16px;color:#cfe0d8;margin-top:10px}
 .includes{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;font-size:14.5px;color:#e5efe9}
@@ -245,9 +248,9 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
 .buybar a.buy{background:#B7F14A;color:#123D32;font-weight:800;font-size:15px;border-radius:999px;padding:12px 26px;white-space:nowrap}
 body{padding-bottom:64px}
 @media (max-width:900px){
-  .buybar .deal{display:none}
-  .buybar .p{font-size:13px}
+  .buybar .p{font-size:12.5px}
   .buybar .p b{font-size:16px}
+  .buybar .deal{font-size:10.5px;padding:2px 8px;margin-inline-start:6px}
   .video-frame img{height:220px}
 }
 /* mobile */
@@ -267,6 +270,7 @@ body{padding-bottom:64px}
   .hero h1,.hero p.lead{padding-inline-end:2px}
   .testi-wall{columns:1}
   .problem-grid,.buy-box,.contact-grid,.pair{grid-template-columns:1fr}
+  .buy-box{grid-template-areas:"copy" "card" "inc"}
   .pair{gap:12px;margin-bottom:12px}
   .hero-stats{inset-inline-start:8px;bottom:10px;padding:9px 14px}
   .hero-glow{inset:0}
@@ -339,7 +343,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>לנקות את המזגן מבפנים. בלי טכנאי.</h1>
     <p class="lead">20 דקות, בלי טכנאי ובלי בלגן: המזגן חוזר לקרר כמו חדש, להריח כמו חדש, והאוויר בבית נקי באמת.</p>
     <div class="hero-ctas">
-      <a class="btn" href="/checkout/">לרכישת הערכה · ₪199</a>
+      <a class="btn" href="/checkout/">לרכישה ב־₪199 במקום ₪249 · עד ה־1.8</a>
       <a class="btn btn-ghost" href="#steps">איך זה עובד</a>
     </div>
     <div class="hero-points">
@@ -570,17 +574,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="kicker">הזמנה</span>
       <h2>הקיץ הזה, הבית שלכם נושם אוויר נקי.</h2>
       <p>ערכה אחת, כל הכלים, בלי פשרות: מנקים ומחטאים את כל המזגנים בבית מתי שנוח לכם, והכלים נשארים אתכם לשנים. מזמינים היום ומקבלים עד הבית תוך 3 עד 5 ימי עסקים.</p>
-      <ul class="includes">
-        <li>תרסיס ניקוי אקולוגי</li>
-        <li>מרסס מים בלחץ (1 ליטר)</li>
-        <li>שרוול ניקוז רב־פעמי</li>
-        <li>סט מברשות ייעודיות</li>
-        <li>מטליות מיקרופייבר</li>
-        <li>הדרכת וידאו מלאה ב־QR</li>
-      </ul>
     </div>
     <div class="buy-card">
-      <div class="price-row"><span class="price">₪199</span><span class="price-note"><s style="color:#8a968f">₪249</s> · מבצע עד סוף יולי · משלוח חינם</span></div>
+      <div class="price-row"><span class="price">₪199</span><span class="price-note"><s style="color:#8a968f">₪249</s> · הנחת השקה עד ה־1.8 · משלוח חינם</span></div>
       <a class="btn" href="/checkout/">לרכישת הערכה עכשיו</a>
       <div class="buy-trust">
         <span>אלפי ערכות כבר נרכשו ברחבי הארץ</span>
@@ -589,6 +585,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span>התשלום מושלם בשיחה, באמצעי מאובטח לבחירתכם</span>
       </div>
     </div>
+    <ul class="includes">
+      <li>תרסיס ניקוי אקולוגי</li>
+      <li>מרסס מים בלחץ (1 ליטר)</li>
+      <li>שרוול ניקוז רב־פעמי</li>
+      <li>סט מברשות ייעודיות</li>
+      <li>מטליות מיקרופייבר</li>
+      <li>הדרכת וידאו מלאה ב־QR</li>
+    </ul>
   </div>
 </section>
 
@@ -688,7 +692,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="buybar">
   <div class="buybar-in">
-    <div class="p"><b>₪199</b> <s>₪249</s> · משלוח חינם<span class="deal">מבצע עד סוף יולי</span></div>
+    <div class="p"><b>₪199</b> <s>₪249</s><span class="deal">הנחת השקה · המחיר חוזר ל־₪249 ב־1.8</span></div>
     <a class="buy" href="/checkout/">לרכישה ב־₪199</a>
   </div>
 </div>
