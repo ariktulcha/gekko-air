@@ -7,7 +7,34 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NHCQD6RW');</script>
-<!-- End Google Tag Manager --><meta name="viewport" content="width=device-width, initial-scale=1"><title>העמוד לא נמצא | Gekko Air</title>
+<!-- End Google Tag Manager -->
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1557223191941653');
+fbq('track','PageView');
+(function(){
+  var m=location.pathname.match(/^\/blog\/([^\/]+)\/?/);
+  if(m)fbq('track','ViewContent',{content_type:'article',content_name:m[1]});
+  function whereIs(a){var s=a.closest('section[id],main[id],div[id]');if(s&&s.id)return s.id;
+    if(a.closest('.buybar'))return'buybar';if(a.closest('header'))return'header';
+    if(a.closest('footer'))return'footer';return'page'}
+  document.addEventListener('click',function(ev){
+    var a=ev.target&&ev.target.closest?ev.target.closest('a[href]'):null;
+    if(!a||typeof fbq!=='function')return;
+    var h=a.getAttribute('href')||'';var w=window.dataLayer=window.dataLayer||[];var p=whereIs(a);
+    if(h.indexOf('/checkout')>-1){fbq('trackCustom','ClickCheckoutCTA',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'checkout',location:p})}
+    else if(h.indexOf('wa.me')>-1){fbq('trackCustom','ClickWhatsApp',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'whatsapp',location:p})}
+    else if(h.indexOf('mailto:')===0){fbq('trackCustom','ClickEmail',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'email',location:p})}
+  },true);
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1557223191941653&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel --><meta name="viewport" content="width=device-width, initial-scale=1"><title>העמוד לא נמצא | Gekko Air</title>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta name="robots" content="noindex,follow"><link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet"><style>body{margin:0;background:#F7FAF8;font-family:Heebo,Arial,sans-serif;color:#1F2524;direction:rtl}.wrap{max-width:900px;margin:0 auto;padding:80px 28px}h1{font-size:44px;line-height:1.14;color:#123D32}.lead{font-size:20px;line-height:1.75;color:#3d4a45}.pill{display:inline-flex;border-radius:999px;background:#EAF6EC;color:#123D32;padding:7px 14px;font-size:13px;font-weight:800}.btn{display:inline-flex;background:#123D32;color:#B7F14A;text-decoration:none;padding:14px 25px;border-radius:999px;font-weight:900;margin:8px 0 0 8px}</style></head>

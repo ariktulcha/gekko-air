@@ -9,6 +9,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NHCQD6RW');</script>
 <!-- End Google Tag Manager -->
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1557223191941653');
+fbq('track','PageView');
+(function(){
+  var m=location.pathname.match(/^\/blog\/([^\/]+)\/?/);
+  if(m)fbq('track','ViewContent',{content_type:'article',content_name:m[1]});
+  function whereIs(a){var s=a.closest('section[id],main[id],div[id]');if(s&&s.id)return s.id;
+    if(a.closest('.buybar'))return'buybar';if(a.closest('header'))return'header';
+    if(a.closest('footer'))return'footer';return'page'}
+  document.addEventListener('click',function(ev){
+    var a=ev.target&&ev.target.closest?ev.target.closest('a[href]'):null;
+    if(!a||typeof fbq!=='function')return;
+    var h=a.getAttribute('href')||'';var w=window.dataLayer=window.dataLayer||[];var p=whereIs(a);
+    if(h.indexOf('/checkout')>-1){fbq('trackCustom','ClickCheckoutCTA',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'checkout',location:p})}
+    else if(h.indexOf('wa.me')>-1){fbq('trackCustom','ClickWhatsApp',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'whatsapp',location:p})}
+    else if(h.indexOf('mailto:')===0){fbq('trackCustom','ClickEmail',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'email',location:p})}
+  },true);
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1557223191941653&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>השלמת הזמנה | Gekko Air</title>
 <meta name="description" content="הזמנת ערכת Gekko Air לניקוי מזגנים. מבצע ₪199 עם משלוח חינם עד הבית.">
@@ -143,9 +170,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 
 <script>
+var dl = window.dataLayer = window.dataLayer || [];
+function fb(){ if (typeof fbq === 'function') try { fbq.apply(null, arguments); } catch(e){} }
+fb('track','InitiateCheckout',{value:199,currency:'ILS',content_name:'ערכת Gekko Air'});
+dl.push({event:'begin_checkout',currency:'ILS',value:199});
 var refills = 0;
 function refill(d){
+  var prev = refills;
   refills = Math.max(0, Math.min(6, refills + d));
+  if (refills > prev) {
+    fb('track','AddToCart',{value:89,currency:'ILS',content_name:'בקבוק מילוי 500 מ״ל',content_ids:['refill-500ml']});
+    dl.push({event:'add_to_cart',currency:'ILS',value:89,item:'refill-500ml'});
+  }
   document.getElementById('rq').textContent = refills;
   var total = 199 + refills * 89;
   document.getElementById('total').textContent = '₪' + total;
@@ -187,6 +223,15 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
   }).then(function(res){
     return res.json().catch(function(){ return {}; }).then(function(data){
       if (!res.ok || data.ok === false) throw new Error(data.message || 'לא הצלחנו לשמור את הפרטים. נסו שוב.');
+      var fd = new FormData(f);
+      var em = String(fd.get('email') || '').trim().toLowerCase();
+      var ph = String(fd.get('phone') || '').replace(/\D/g, '');
+      if (ph.charAt(0) === '0') ph = '972' + ph.slice(1);
+      var fn = String(fd.get('name') || '').trim().split(/\s+/)[0] || '';
+      var total = 199 + refills * 89;
+      fb('init','1557223191941653',{em:em,ph:ph,fn:fn});
+      fb('track','Lead',{value:total,currency:'ILS',content_name:'ערכת Gekko Air',content_type:'product',contents:[{id:'gekko-kit',quantity:1},{id:'refill-500ml',quantity:refills}]});
+      dl.push({event:'generate_lead',currency:'ILS',value:total,refills:refills});
       show('ok', data.message || 'הפרטים נשמרו.');
       showStep2();
     });
