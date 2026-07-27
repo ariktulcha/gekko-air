@@ -622,10 +622,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="contact-copy">
       <span class="kicker">צור קשר</span>
       <h2>מדברים איתנו. עונים מהר.</h2>
-      <p>שאלה על הערכה? על התאמה למזגן שלכם? על הזמנה קיימת? כתבו לנו ונחזור אליכם, בדרך כלל תוך שעות ספורות.</p>
+      <p>שאלה על הערכה? על התאמה למזגן שלכם? על הזמנה קיימת? שלחו הודעה בטופס או ישירות בוואטסאפ, ונחזור אליכם בדרך כלל תוך שעות ספורות.</p>
       <div class="contact-ways">
-        <a class="way" href="https://wa.me/972500000000" target="_blank" rel="noopener"><span class="ico">💬</span>וואטסאפ (הכי מהיר)</a>
-        <a class="way" href="mailto:info@gekkoair.co.il"><span class="ico">✉️</span>info@gekkoair.co.il</a>
+        <a class="way" href="https://wa.me/972559835361" target="_blank" rel="noopener"><span class="ico">💬</span>וואטסאפ: 055-9835361 (הכי מהיר)</a>
       </div>
     </div>
     <form class="contact" name="contact" action="#contact" data-endpoint="/.netlify/functions/contact" onsubmit="return false" novalidate>
@@ -671,8 +670,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <h4>צור קשר</h4>
         <ul>
-          <li><a href="https://wa.me/972500000000" target="_blank" rel="noopener">וואטסאפ</a></li>
-          <li><a href="mailto:info@gekkoair.co.il">info@gekkoair.co.il</a></li>
+          <li><a href="https://wa.me/972559835361" target="_blank" rel="noopener">וואטסאפ: 055-9835361</a></li>
           <li><a href="#contact">טופס יצירת קשר</a></li>
         </ul>
         <div style="display:flex;gap:12px;margin-top:16px">
@@ -755,8 +753,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var fd = new FormData(form);
       var subject = encodeURIComponent('פנייה מהאתר: ' + (fd.get('name') || ''));
       var bodyTxt = encodeURIComponent('שם: ' + (fd.get('name') || '') + '\nטלפון: ' + (fd.get('phone') || '') + '\nאימייל: ' + (fd.get('email') || '') + '\n\n' + (fd.get('message') || ''));
-      show('err', (err.message || 'השליחה נכשלה.') + ' פותחים לך מייל מוכן לשליחה...');
-      window.location.href = 'mailto:info@gekkoair.co.il?subject=' + subject + '&body=' + bodyTxt;
+      show('err', (err.message || 'השליחה נכשלה.') + ' פותחים לך וואטסאפ עם ההודעה מוכנה...');
+      window.location.href = 'https://wa.me/972559835361?text=' + bodyTxt;
     }).finally(function(){
       form.classList.remove('is-sending');
       if (button) button.textContent = 'שלח';
