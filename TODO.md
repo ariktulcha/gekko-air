@@ -54,7 +54,8 @@
 - [x] ✅ דומיין gekkoair.co.il נרכש וחי! canonical, sitemap ו־robots מיושרים אליו
 - [ ] 🔴 Search Console: להגיש את https://gekkoair.co.il/sitemap.xml (המפה מוכנה, 17 עמודים מאומתים)
 - [x] ✅ Google Tag Manager מותקן בכל 13 העמודים (GTM-NHCQD6RW)
-- [ ] 🔴 בתוך GTM: לוודא תג GA4 מפורסם + להוסיף פיקסל מטא כשיהיה Pixel ID
+- [x] ✅ Meta Pixel ‏(1557223191941653) מוטמע בקוד בכל 19 העמודים עם משפך אירועים מלא: PageView, ViewContent (מאמרים), ClickCheckoutCTA/ClickWhatsApp/ClickEmail (קליקים), InitiateCheckout, AddToCart (מילוי), Lead (+Advanced Matching), Contact + אירועי dataLayer מקבילים ל-GA4. בנוסף תוקן: סקריפט GTM ראשי היה חסר ב-11 מאמרי הבלוג (היה רק noscript)
+- [ ] 🔴 בתוך GTM: **להסיר את תג הפיקסל הידני ואת תג ה-Purchase** (הפיקסל עכשיו בקוד — תג כפול = ספירה כפולה; Purchase הוא אירוע שגוי לאתר לידים) + לוודא תג GA4 מפורסם
 
 - [ ] 🔴 הקמת חשבון אינסטגרם עסקי
 - [x] ✅ דף הזמנה דו־שלבי `/checkout/` — משודרג למערכת לידים מלאה:
