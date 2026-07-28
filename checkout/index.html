@@ -34,7 +34,7 @@ fbq('track','PageView');
   },true);
 })();
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1557223191941653&ev=PageView&noscript=1"></noscript>
+<noscript><img decoding="async" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1557223191941653&ev=PageView&noscript=1"></noscript>
 <!-- End Meta Pixel -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>השלמת הזמנה | Gekko Air</title>
@@ -42,12 +42,9 @@ fbq('track','PageView');
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#F7FAF8;font-family:'Heebo',system-ui,sans-serif;color:#1F2524;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+body{background:#F7FAF8;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:#1F2524;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
 a{color:#123D32;text-decoration:none}
 .site-header{position:sticky;top:0;z-index:50;background:rgba(247,250,248,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(18,61,50,.08)}
 .gk-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1240px;margin:0 auto;gap:16px}
@@ -102,6 +99,24 @@ input:focus{outline:2px solid #B7F14A;border-color:#123D32}
 .hp-field{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
 form.is-sending .btn{opacity:.72;cursor:wait}
 .back-link{display:block;text-align:center;margin-top:22px;font-size:14px;font-weight:600}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  .gk-nav{padding:12px 20px;gap:10px}
+  .gk-brand b{display:none}
+  .gk-brand img{width:40px;height:40px}
+  .secure{font-size:12.5px;white-space:nowrap}
+  main{max-width:100%;padding:34px 20px 64px;overflow:hidden}
+  .steps-bar{font-size:13px}
+  .order{display:grid;grid-template-columns:64px 1fr;align-items:center;gap:12px;padding:16px;margin-bottom:20px}
+  .order img{width:64px;height:64px}
+  .order .price{grid-column:1/-1;margin:0;text-align:right;background:#EAF6EC;border-radius:12px;padding:10px 12px}
+  .upsell{display:grid;grid-template-columns:1fr auto;gap:10px 12px;padding:14px}
+  .upsell .u-price{grid-column:1/2;grid-row:2;font-size:14px}
+  .qty{grid-column:2;grid-row:1/3;align-self:center}
+  .total-row{padding:12px 14px}
+  .panel{padding:24px 20px}
+  .panel h1{font-size:23px}
+}
 </style>
 </head>
 <body>
@@ -112,7 +127,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header class="site-header">
   <div class="gk-nav">
-    <a class="gk-brand" href="/"><img src="/assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt="Gekko Air"><b>GEKKO AIR</b></a>
+    <a class="gk-brand" href="/"><img decoding="async" src="/assets/fbfa2713-4181-473c-b6cf-42932f3d1a06.jpg" alt="Gekko Air"><b>GEKKO AIR</b></a>
     <span class="secure">🔒 הזמנה מאובטחת</span>
   </div>
 </header>
@@ -125,15 +140,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="order">
-    <img src="/assets/kit-real.jpg" alt="ערכת Gekko Air">
+    <img decoding="async" src="/assets/kit-real.jpg" alt="ערכת Gekko Air">
     <div><b>ערכת Gekko Air המלאה</b><span>תרסיס אקולוגי · מרסס · מברשות · שרוול ניקוז · הדרכה</span></div>
     <div class="price"><b>₪199</b> <s style="color:#8a968f;font-size:13px">₪249</s><br><span>מבצע עד ה־1.8 · משלוח חינם</span></div>
   </div>
 
   <div class="upsell">
-    <div class="u-info"><b>בקבוק מילוי לתכשיר (500 מ״ל)</b><span class="u-sub">מספיק לעוד כ־3 מזגנים קטנים · שומר לכם לעונה הבאה</span></div>
+    <div class="u-info"><b>בקבוק מילוי לתכשיר</b><span class="u-sub">מיועד לעוד ניקויים · שומר לכם לעונה הבאה</span></div>
     <div class="qty"><button type="button" onclick="refill(-1)" aria-label="פחות">−</button><b id="rq">0</b><button type="button" onclick="refill(1)" aria-label="יותר">+</button></div>
-    <div class="u-price">₪89 ליח׳</div>
+    <div class="u-price">₪69 ליח׳</div>
   </div>
 
   <div class="total-row"><span>סה״כ להזמנה · משלוח חינם</span><b id="total">₪199</b></div>
@@ -179,14 +194,14 @@ function refill(d){
   var prev = refills;
   refills = Math.max(0, Math.min(6, refills + d));
   if (refills > prev) {
-    fb('track','AddToCart',{value:89,currency:'ILS',content_name:'בקבוק מילוי 500 מ״ל',content_ids:['refill-500ml']});
-    dl.push({event:'add_to_cart',currency:'ILS',value:89,item:'refill-500ml'});
+    fb('track','AddToCart',{value:69,currency:'ILS',content_name:'בקבוק מילוי לתכשיר',content_ids:['refill-bottle']});
+    dl.push({event:'add_to_cart',currency:'ILS',value:69,item:'refill-bottle'});
   }
   document.getElementById('rq').textContent = refills;
-  var total = 199 + refills * 89;
+  var total = 199 + refills * 69;
   document.getElementById('total').textContent = '₪' + total;
   var desc = 'ערכת Gekko Air מבצע ₪199';
-  if (refills > 0) desc += ' + ' + refills + ' בקבוקי מילוי (₪' + (refills * 89) + ') = ₪' + total;
+  if (refills > 0) desc += ' + ' + refills + ' בקבוקי מילוי (₪' + (refills * 69) + ') = ₪' + total;
   document.querySelector('input[name="product"]').value = desc;
 }
 document.getElementById('orderForm').addEventListener('submit', function(e){
@@ -228,9 +243,9 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
       var ph = String(fd.get('phone') || '').replace(/\D/g, '');
       if (ph.charAt(0) === '0') ph = '972' + ph.slice(1);
       var fn = String(fd.get('name') || '').trim().split(/\s+/)[0] || '';
-      var total = 199 + refills * 89;
+      var total = 199 + refills * 69;
       fb('init','1557223191941653',{em:em,ph:ph,fn:fn});
-      fb('track','Lead',{value:total,currency:'ILS',content_name:'ערכת Gekko Air',content_type:'product',contents:[{id:'gekko-kit',quantity:1},{id:'refill-500ml',quantity:refills}]});
+      fb('track','Lead',{value:total,currency:'ILS',content_name:'ערכת Gekko Air',content_type:'product',contents:[{id:'gekko-kit',quantity:1},{id:'refill-bottle',quantity:refills}]});
       dl.push({event:'generate_lead',currency:'ILS',value:total,refills:refills});
       show('ok', data.message || 'הפרטים נשמרו.');
       showStep2();
