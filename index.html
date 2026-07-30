@@ -256,13 +256,21 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
 .foot-bottom{border-top:1px solid rgba(247,250,248,.12);padding:18px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#9fb8ac}
 
 
-/* video placeholder */
-.video-frame{position:relative;max-width:860px;margin:44px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -28px rgba(18,61,50,.4)}
-.video-frame img{width:100%;height:340px;object-fit:cover;filter:brightness(.55)}
-.video-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
-.video-overlay .play{width:64px;height:64px;border-radius:50%;background:#B7F14A;color:#123D32;display:flex;align-items:center;justify-content:center;font-size:22px;padding-inline-start:4px}
-.video-overlay b{color:#fff;font-size:20px}
-.video-overlay .video-sub{color:rgba(255,255,255,.85);font-size:13.5px}
+/* vertical guide video */
+.video-frame{position:relative;width:min(100%,430px);aspect-ratio:9/16;margin:38px auto 0;border:0;border-radius:28px;overflow:hidden;background:#071f1b;box-shadow:0 34px 85px -34px rgba(18,61,50,.62),0 0 0 1px rgba(18,61,50,.08);cursor:pointer;padding:0;display:block}
+.video-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .45s ease,filter .45s ease}
+.video-frame:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,12,10,.42),rgba(2,12,10,.72));transition:background .3s ease}
+.video-frame:hover img{transform:scale(1.035);filter:saturate(1.08)}
+.video-frame:hover:before{background:linear-gradient(180deg,rgba(2,12,10,.34),rgba(2,12,10,.66))}
+.video-overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:28px;color:#fff}
+.video-overlay .play{width:76px;height:76px;border-radius:50%;background:#B7F14A;color:#123D32;display:grid;place-items:center;box-shadow:0 16px 42px -16px rgba(183,241,74,.9),0 0 0 10px rgba(183,241,74,.16)}
+.video-overlay .play:before{content:"";width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-inline-start:22px solid #123D32;transform:translateX(-2px)}
+.video-overlay b{color:#fff;font-size:22px;line-height:1.25;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.video-overlay .video-sub{color:rgba(255,255,255,.9);font-size:14px;font-weight:700;line-height:1.45;max-width:300px;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;z-index:4}
+.video-frame.is-playing{cursor:default;background:#000}
+.video-frame.is-playing:before,.video-frame.is-playing img,.video-frame.is-playing .video-overlay{display:none}
+.video-note{max-width:520px;margin:18px auto 0;text-align:center;color:var(--muted);font-size:14.5px;line-height:1.65}
 /* sticky mobile buy bar */
 .buybar{display:flex;position:fixed;bottom:0;inset-inline:0;z-index:60;background:#123D32;padding:10px 20px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px -12px rgba(0,0,0,.35)}
 .buybar-in{max-width:1240px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px}
@@ -276,7 +284,7 @@ body{padding-bottom:64px}
   .buybar .p{font-size:12.5px}
   .buybar .p b{font-size:16px}
   .buybar .deal{font-size:10.5px;padding:2px 8px;margin-inline-start:6px}
-  .video-frame img{height:220px}
+  .video-frame{width:min(100%,360px);border-radius:24px}
 }
 /* mobile */
 @media (max-width: 900px){
@@ -465,15 +473,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>צפו איך זה עובד.</h2>
       </div>
     </div>
-    <div class="video-frame">
-      <!-- TODO: כשיש סרטון, להחליף ב-<video controls> או embed יוטיוב -->
-      <img decoding="async" src="assets/sleeve-action.jpg" alt="שרוול הניקוז בפעולה במהלך ניקוי מזגן" loading="lazy">
+    <button class="video-frame" type="button" data-youtube="NY6zutMXI4o" aria-label="נגן סרטון הדרכה מלא לשימוש בערכת Gekko Air">
+      <img src="assets/video-poster-gekko-air.jpg" alt="ניקוי מזגן גרסת פרימיום עם ערכת Gekko Air" loading="lazy" width="1080" height="1920">
       <div class="video-overlay">
-        <span class="play">🎬</span>
-        <b>סרטון ההדרכה המלא: בקרוב כאן</b>
-        <span class="video-sub">בינתיים: כל שלב בערכה מגיע עם סרטון קצר בסריקת QR</span>
+        <span class="play" aria-hidden="true"></span>
+        <b>סרטון ההדרכה המלא</b>
+        <span class="video-sub">לחצו לצפייה: כך משתמשים בערכת Gekko Air שלב אחר שלב</span>
       </div>
-    </div>
+    </button>
+    <p class="video-note">הסרטון אנכי ומותאם לצפייה מהירה מהטלפון — בדיוק כמו שמקבלים עם הערכה.</p>
   </div>
 </section>
 
@@ -728,6 +736,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
+(function(){
+  var videoButtons = document.querySelectorAll('.video-frame[data-youtube]');
+  videoButtons.forEach(function(button){
+    button.addEventListener('click', function(){
+      if (button.classList.contains('is-playing')) return;
+      var id = button.getAttribute('data-youtube');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      iframe.title = 'סרטון הדרכה Gekko Air';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+      button.classList.add('is-playing');
+      button.appendChild(iframe);
+    });
+  });
+})();
 (function(){
   var slides = document.getElementById('baSlides');
   var dots = document.getElementById('baDots').children;
