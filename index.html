@@ -257,7 +257,19 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
 
 
 /* vertical guide video */
+.video-section{background:radial-gradient(circle at 18% 8%,rgba(183,241,74,.18),transparent 34%),linear-gradient(180deg,#fff,#F2F8F4)!important;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.video-showcase{max-width:980px;margin:34px auto 0;display:grid;grid-template-columns:minmax(0,1fr) 340px;grid-template-areas:"copy video";align-items:center;gap:38px;padding:34px;border-radius:34px;background:linear-gradient(135deg,#123D32 0%,#0B2B25 68%,#071f1b 100%);box-shadow:0 32px 90px -46px rgba(18,61,50,.72),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;position:relative}
+.video-showcase:before{content:"";position:absolute;inset:auto -70px -130px auto;width:330px;height:330px;border-radius:50%;background:rgba(183,241,74,.13);filter:blur(8px)}
+.video-copy{grid-area:copy;position:relative;color:#F7FAF8;display:flex;flex-direction:column;gap:16px;max-width:460px;z-index:1}
+.video-copy h3{font-size:34px;line-height:1.12;color:#fff;margin:0;letter-spacing:-.02em}
+.video-copy p{font-size:17px;line-height:1.75;color:#d6e6df;margin:0}
+.video-bullets{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.video-bullets span{display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);border-radius:999px;padding:10px 12px;color:#fff;font-weight:800;font-size:13.5px;white-space:nowrap}
+.video-bullets span:before{content:"✓";display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:#B7F14A;color:#123D32;font-size:12px;flex:0 0 auto}
+.video-stage{grid-area:video;justify-self:center;position:relative;z-index:1}
+.video-stage:before{content:"וידאו קצר";position:absolute;top:18px;right:-28px;z-index:5;background:#B7F14A;color:#123D32;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:900;box-shadow:0 12px 28px -18px #000;transform:rotate(7deg)}
 .video-frame{position:relative;width:min(100%,430px);aspect-ratio:9/16;margin:38px auto 0;border:0;border-radius:28px;overflow:hidden;background:#071f1b;box-shadow:0 34px 85px -34px rgba(18,61,50,.62),0 0 0 1px rgba(18,61,50,.08);cursor:pointer;padding:0;display:block}
+.video-showcase .video-frame{width:340px;max-width:100%;margin:0;border-radius:26px;box-shadow:0 24px 52px -28px rgba(0,0,0,.82),0 0 0 1px rgba(255,255,255,.14)}
 .video-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .45s ease,filter .45s ease}
 .video-frame:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,12,10,.42),rgba(2,12,10,.72));transition:background .3s ease}
 .video-frame:hover img{transform:scale(1.035);filter:saturate(1.08)}
@@ -271,6 +283,7 @@ footer{background:var(--green);color:#cfe0d8;margin-top:40px}
 .video-frame.is-playing{cursor:default;background:#000}
 .video-frame.is-playing:before,.video-frame.is-playing img,.video-frame.is-playing .video-overlay{display:none}
 .video-note{max-width:520px;margin:18px auto 0;text-align:center;color:var(--muted);font-size:14.5px;line-height:1.65}
+.video-copy .video-note{margin:0;text-align:start;color:#c9ddd4;font-size:14.5px;max-width:430px}
 /* sticky mobile buy bar */
 .buybar{display:flex;position:fixed;bottom:0;inset-inline:0;z-index:60;background:#123D32;padding:10px 20px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px -12px rgba(0,0,0,.35)}
 .buybar-in{max-width:1240px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px}
@@ -284,7 +297,15 @@ body{padding-bottom:64px}
   .buybar .p{font-size:12.5px}
   .buybar .p b{font-size:16px}
   .buybar .deal{font-size:10.5px;padding:2px 8px;margin-inline-start:6px}
+  .video-showcase{grid-template-columns:1fr;grid-template-areas:"copy" "video";gap:24px;padding:22px;border-radius:26px;background:linear-gradient(180deg,#123D32,#0B2B25)}
+  .video-copy{max-width:none;text-align:center;align-items:center}
+  .video-copy h3{font-size:26px}
+  .video-copy p{font-size:15.5px;line-height:1.65}
+  .video-bullets{grid-template-columns:1fr;align-self:stretch}
+  .video-bullets span{justify-content:center;white-space:normal}
+  .video-stage:before{right:10px;top:-10px;transform:rotate(5deg)}
   .video-frame{width:min(100%,360px);border-radius:24px}
+  .video-copy .video-note{text-align:center}
 }
 /* mobile */
 @media (max-width: 900px){
@@ -465,7 +486,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section id="steps" class="section" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<section id="steps" class="section video-section">
   <div class="wrap">
     <div class="how-head">
       <div>
@@ -473,15 +494,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>צפו איך זה עובד.</h2>
       </div>
     </div>
-    <button class="video-frame" type="button" data-youtube="NY6zutMXI4o" aria-label="נגן סרטון הדרכה מלא לשימוש בערכת Gekko Air">
-      <img src="assets/video-poster-gekko-air.jpg" alt="ניקוי מזגן גרסת פרימיום עם ערכת Gekko Air" loading="lazy" width="1080" height="1920">
-      <div class="video-overlay">
-        <span class="play" aria-hidden="true"></span>
-        <b>סרטון ההדרכה המלא</b>
-        <span class="video-sub">לחצו לצפייה: כך משתמשים בערכת Gekko Air שלב אחר שלב</span>
+    <div class="video-showcase">
+      <div class="video-copy">
+        <h3>רואים בדיוק איך מנקים, לפני שמתחילים.</h3>
+        <p>סרטון הדרכה קצר וברור שמראה את כל התהליך: חיבור השרוול, ריסוס החומר, הברשה ושטיפה נקייה בלי להשאיר לכלוך על הקיר או הרצפה.</p>
+        <div class="video-bullets" aria-label="מה רואים בסרטון">
+          <span>שלב אחרי שלב</span>
+          <span>בלי לכלוך על הקיר</span>
+          <span>מתאים לכל מזגן עילי</span>
+          <span>20 דקות עבודה</span>
+        </div>
+        <p class="video-note">לחצו לצפייה מלאה וקבלו ביטחון לפני הניקוי הראשון שלכם.</p>
       </div>
-    </button>
-    <p class="video-note">הסרטון אנכי ומותאם לצפייה מהירה מהטלפון — בדיוק כמו שמקבלים עם הערכה.</p>
+      <div class="video-stage">
+        <button class="video-frame" type="button" data-youtube="NY6zutMXI4o" aria-label="נגן סרטון הדרכה מלא לשימוש בערכת Gekko Air">
+          <img src="assets/video-poster-gekko-air.jpg" alt="ניקוי מזגן גרסת פרימיום עם ערכת Gekko Air" loading="lazy" width="1080" height="1920">
+          <div class="video-overlay">
+            <span class="play" aria-hidden="true"></span>
+            <b>סרטון ההדרכה המלא</b>
+            <span class="video-sub">לחצו לצפייה: כך משתמשים בערכת Gekko Air שלב אחר שלב</span>
+          </div>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
