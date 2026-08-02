@@ -142,9 +142,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main>
   <div class="steps-bar">
-    <span class="st on" id="sb1"><span class="n">1</span>פרטים</span>
+    <span class="st on" id="sb1"><span class="n">1</span>פרטי המזמין</span>
     <span class="ln"></span>
-    <span class="st" id="sb2"><span class="n">2</span>אישור הזמנה</span>
+    <span class="st" id="sb2"><span class="n">2</span>פרטי תשלום</span>
   </div>
 
   <div class="order">
@@ -162,13 +162,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="total-row"><span>סה״כ להזמנה · משלוח חינם</span><b id="total">₪199</b></div>
 
   <div class="panel" id="step1">
-    <h1>כמעט סיימנו — נשארו רק הפרטים שלכם</h1>
-    <p class="sub">משאירים פרטים, ואנחנו משלימים איתכם את ההזמנה.</p>
-    <div class="fit">
-      <p><span><b>מתאים לכל מזגן עילי ביתי</b> — ספליט, אינוורטר, כל היצרנים</span></p>
-      <p><span><b>הערכה מספיקה לניקוי 2 מזגנים</b> — והכלים נשארים אתכם לשנים</span></p>
-      <span class="fit-note">יש לכם יותר מ־2 מזגנים? הוסיפו בקבוק מילוי למעלה. מזגן מיני מרכזי או נסתר? <a href="https://wa.me/972559835361" target="_blank" rel="noopener">כתבו לנו בוואטסאפ</a> לפני ההזמנה.</span>
-    </div>
+    <h1>פרטי המזמין</h1>
+    <p class="sub">ממלאים פרטים וממשיכים לתשלום מאובטח.</p>
     <form name="order" method="POST" data-endpoint="/.netlify/functions/order-intake" id="orderForm" novalidate>
       <input type="hidden" name="form-name" value="order">
       <input type="hidden" name="product" value="ערכת Gekko Air מבצע ₪199">
@@ -177,7 +172,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div><label for="oname">שם מלא</label><input id="oname" name="name" required autocomplete="name" placeholder="ישראל ישראלי"></div>
       <div><label for="ophone">טלפון נייד</label><input id="ophone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="050-0000000" pattern="[0-9\-+ ]{9,15}"></div>
       <div><label for="omail">אימייל</label><input id="omail" name="email" type="email" required autocomplete="email" placeholder="you@email.com"></div>
-      <button class="btn" type="submit">המשך לאישור ההזמנה ←</button>
+      <button class="btn" type="submit">המשך לפרטי תשלום ←</button>
       <span class="alt-wa">מעדיפים וואטסאפ? <a href="https://wa.me/972559835361?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%96%D7%9E%D7%99%D7%9F%20%D7%90%D7%AA%20%D7%A2%D7%A8%D7%9B%D7%AA%20Gekko%20Air" target="_blank" rel="noopener">שלחו לנו הודעה ונחזור אליכם</a></span>
       <p class="form-status" role="status" aria-live="polite"></p>
     </form>
@@ -189,11 +184,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="panel" id="step2">
-    <div class="big">📞</div>
-    <h2>קיבלנו! ההזמנה שלך שמורה אצלנו.</h2>
-    <p>אנחנו כרגע בשדרוג של האתר, ולכן נחזור אליך בקרוב טלפונית ונשלים יחד את ההזמנה והתשלום.</p>
-    <p>מצטערים על אי הנוחות. זה שווה את ההמתנה 🦎</p>
-    <p class="note">שומרים לך את מחיר המבצע ₪199 (במקום ₪249) גם אם הוא יסתיים עד שנחזור אליך.</p>
+    <div class="big">🛠️</div>
+    <h2>יש לנו תקלה טכנית כרגע</h2>
+    <p>בקרוב ניצור איתכם קשר להשלמת ההזמנה.</p>
+    <p class="note">ההזמנה והפרטים שלכם נשמרו, ומחיר המבצע ₪199 שמור לכם.</p>
     <a class="back-link" href="/">← חזרה לאתר</a>
   </div>
 </main>
@@ -239,8 +233,8 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
   if (!f.reportValidity()) return false;
   if (f.classList.contains('is-sending')) return false;
   f.classList.add('is-sending');
-  if (button) button.textContent = 'שומרים את הפרטים...';
-  show('', 'שומרים את הפרטים ומעדכנים את הצוות...');
+  if (button) button.textContent = 'מעבירים לתשלום...';
+  show('', 'רק רגע, מעבירים אתכם לשלב התשלום...');
   fetch(endpoint, {
     method:'POST',
     headers:{
@@ -261,14 +255,13 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
       fb('init','1557223191941653',{em:em,ph:ph,fn:fn});
       fb('track','Lead',{value:total,currency:'ILS',content_name:'ערכת Gekko Air',content_type:'product',contents:[{id:'gekko-kit',quantity:1},{id:'refill-bottle',quantity:refills}]});
       dl.push({event:'generate_lead',currency:'ILS',value:total,refills:refills});
-      show('ok', data.message || 'הפרטים נשמרו.');
       showStep2();
     });
   }).catch(function(err){
     show('err', (err.message || 'לא הצלחנו לשמור את הפרטים.') + ' אפשר לנסות שוב או לפנות אלינו במייל.');
   }).finally(function(){
     f.classList.remove('is-sending');
-    if (button) button.textContent = 'המשך לאישור ההזמנה ←';
+    if (button) button.textContent = 'המשך לפרטי תשלום ←';
   });
   return false;
 });
