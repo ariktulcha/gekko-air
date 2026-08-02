@@ -104,9 +104,6 @@ input:focus{outline:2px solid #B7F14A;border-color:#123D32}
 .form-status.show{display:block}
 .form-status.ok{background:#EAF6EC;color:#123D32;border:1px solid rgba(18,61,50,.14)}
 .form-status.err{background:#fff2f0;color:#8a1f11;border:1px solid rgba(138,31,17,.18)}
-.consent{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.55;color:#3d4a45;cursor:pointer}
-.consent input{width:18px;height:18px;accent-color:#123D32;margin-top:1px;flex:none;cursor:pointer}
-.consent a{color:#123D32;font-weight:700;text-decoration:underline}
 .hp-field{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
 form.is-sending .btn{opacity:.72;cursor:wait}
 .back-link{display:block;text-align:center;margin-top:22px;font-size:14px;font-weight:600}
@@ -180,7 +177,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div><label for="oname">שם מלא</label><input id="oname" name="name" required autocomplete="name" placeholder="ישראל ישראלי"></div>
       <div><label for="ophone">טלפון נייד</label><input id="ophone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="050-0000000" pattern="[0-9\-+ ]{9,15}"></div>
       <div><label for="omail">אימייל</label><input id="omail" name="email" type="email" required autocomplete="email" placeholder="you@email.com"></div>
-      <label class="consent"><input type="checkbox" id="oterms" name="terms_accepted" value="yes" required> קראתי ואני מאשר/ת את <a href="/terms/" target="_blank" rel="noopener">תקנון האתר</a> (כולל מדיניות המשלוחים והביטולים) ואת <a href="/privacy/" target="_blank" rel="noopener">מדיניות הפרטיות</a></label>
       <button class="btn" type="submit">המשך לאישור ההזמנה ←</button>
       <span class="alt-wa">מעדיפים וואטסאפ? <a href="https://wa.me/972559835361?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%96%D7%9E%D7%99%D7%9F%20%D7%90%D7%AA%20%D7%A2%D7%A8%D7%9B%D7%AA%20Gekko%20Air" target="_blank" rel="noopener">שלחו לנו הודעה ונחזור אליכם</a></span>
       <p class="form-status" role="status" aria-live="polite"></p>
