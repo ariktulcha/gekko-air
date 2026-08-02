@@ -87,6 +87,14 @@ input:focus{outline:2px solid #B7F14A;border-color:#123D32}
 .btn:hover{background:#0d2b23}
 .trust{display:flex;flex-direction:column;gap:7px;font-size:13px;color:#3d4a45;margin-top:16px}
 .trust span:before{content:"✓ ";color:#123D32;font-weight:800}
+.fit{background:#EAF6EC;border:1px solid rgba(18,61,50,.14);border-radius:14px;padding:14px 16px;margin-bottom:18px}
+.fit p{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#1F2524;margin-bottom:7px}
+.fit p:before{content:"✓";color:#123D32;font-weight:900;flex:none}
+.fit p b{color:#123D32}
+.fit .fit-note{display:block;font-size:12.5px;color:#5a6963;margin:0;padding-top:2px;border-top:1px solid rgba(18,61,50,.1);margin-top:10px;padding-top:9px}
+.fit .fit-note:before{content:none}
+.alt-wa{display:block;text-align:center;font-size:13.5px;color:#5a6963;margin-top:12px}
+.alt-wa a{font-weight:700;color:#123D32;text-decoration:underline}
 #step2{display:none;text-align:center}
 #step2 .big{width:76px;height:76px;border-radius:50%;background:#EAF6EC;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 18px}
 #step2 h2{color:#123D32;font-size:23px;margin-bottom:10px}
@@ -142,11 +150,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="order">
     <img decoding="async" src="/assets/kit-real.jpg" alt="ערכת Gekko Air">
     <div><b>ערכת Gekko Air המלאה</b><span>תרסיס אקולוגי · מרסס · מברשות · שרוול ניקוז · הדרכה</span></div>
-    <div class="price"><b>₪199</b> <s style="color:#8a968f;font-size:13px">₪249</s><br><span>מבצע עד ה־1.8 · משלוח חינם</span></div>
+    <div class="price"><b>₪199</b> <s style="color:#8a968f;font-size:13px">₪249</s><br><span>מבצע עד ה־11.8 · משלוח חינם</span></div>
   </div>
 
   <div class="upsell">
-    <div class="u-info"><b>בקבוק מילוי לתכשיר</b><span class="u-sub">מיועד לעוד ניקויים · שומר לכם לעונה הבאה</span></div>
+    <div class="u-info"><b>בקבוק מילוי לתכשיר</b><span class="u-sub">רק אם יש לכם יותר מ־2 מזגנים · שומר לכם לעונה הבאה</span></div>
     <div class="qty"><button type="button" onclick="refill(-1)" aria-label="פחות">−</button><b id="rq">0</b><button type="button" onclick="refill(1)" aria-label="יותר">+</button></div>
     <div class="u-price">₪69 ליח׳</div>
   </div>
@@ -154,8 +162,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="total-row"><span>סה״כ להזמנה · משלוח חינם</span><b id="total">₪199</b></div>
 
   <div class="panel" id="step1">
-    <h1>לאן לשלוח את הערכה?</h1>
+    <h1>כמעט סיימנו — נשארו רק הפרטים שלכם</h1>
     <p class="sub">משאירים פרטים, ואנחנו משלימים איתכם את ההזמנה.</p>
+    <div class="fit">
+      <p><span><b>מתאים לכל מזגן עילי ביתי</b> — ספליט, אינוורטר, כל היצרנים</span></p>
+      <p><span><b>הערכה מספיקה לניקוי 2 מזגנים</b> — והכלים נשארים אתכם לשנים</span></p>
+      <span class="fit-note">יש לכם יותר מ־2 מזגנים? הוסיפו בקבוק מילוי למעלה. מזגן מיני מרכזי או נסתר? <a href="https://wa.me/972559835361" target="_blank" rel="noopener">כתבו לנו בוואטסאפ</a> לפני ההזמנה.</span>
+    </div>
     <form name="order" method="POST" data-endpoint="/.netlify/functions/order-intake" id="orderForm" novalidate>
       <input type="hidden" name="form-name" value="order">
       <input type="hidden" name="product" value="ערכת Gekko Air מבצע ₪199">
@@ -165,6 +178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div><label for="ophone">טלפון נייד</label><input id="ophone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="050-0000000" pattern="[0-9\-+ ]{9,15}"></div>
       <div><label for="omail">אימייל</label><input id="omail" name="email" type="email" required autocomplete="email" placeholder="you@email.com"></div>
       <button class="btn" type="submit">המשך לאישור ההזמנה ←</button>
+      <span class="alt-wa">מעדיפים וואטסאפ? <a href="https://wa.me/972559835361?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%96%D7%9E%D7%99%D7%9F%20%D7%90%D7%AA%20%D7%A2%D7%A8%D7%9B%D7%AA%20Gekko%20Air" target="_blank" rel="noopener">שלחו לנו הודעה ונחזור אליכם</a></span>
       <p class="form-status" role="status" aria-live="polite"></p>
     </form>
     <div class="trust">
