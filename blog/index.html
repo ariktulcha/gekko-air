@@ -28,7 +28,7 @@ fbq('track','PageView');
     var a=ev.target&&ev.target.closest?ev.target.closest('a[href]'):null;
     if(!a||typeof fbq!=='function')return;
     var h=a.getAttribute('href')||'';var w=window.dataLayer=window.dataLayer||[];var p=whereIs(a);
-    if(h.indexOf('/checkout')>-1){fbq('trackCustom','ClickCheckoutCTA',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'checkout',location:p})}
+    if(h.indexOf('/checkout')>-1||h.indexOf('pay.sumit.co.il')>-1){fbq('trackCustom','ClickCheckoutCTA',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'checkout',location:p})}
     else if(h.indexOf('wa.me')>-1){fbq('trackCustom','ClickWhatsApp',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'whatsapp',location:p})}
     else if(h.indexOf('mailto:')===0){fbq('trackCustom','ClickEmail',{page:location.pathname,location:p});w.push({event:'cta_click',cta:'email',location:p})}
   },true);
